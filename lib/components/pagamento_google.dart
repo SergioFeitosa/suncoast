@@ -29,7 +29,6 @@ class PagamentoGoogleApp extends StatelessWidget {
         const Locale('en', ''),
         const Locale('es', ''),
         const Locale('de', ''),
-        const Locale('pt', 'BR'),
       ],
       home: PaySampleApp(),
     );
