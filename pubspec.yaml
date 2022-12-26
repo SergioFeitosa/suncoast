@@ -71,6 +71,9 @@ flutter:
     - assets/images/estados/
     - assets/images/cidades/    
     - assets/images/praias/
+    - assets/images/cartaoCredito/
+    - assets/images/pratos/carnes/
+    - assets/images/pratos/frutos_do_mar/
     - assets/images/pratos/porcoes/
     - assets/images/pratos/pratos_regionais/
     - assets/images/pratos/pratos_executivos/

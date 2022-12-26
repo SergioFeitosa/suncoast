@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pay/pay.dart';
@@ -64,7 +66,7 @@ class _PaySampleAppState extends State<PaySampleApp> {
           Container(
             margin: const EdgeInsets.symmetric(vertical: 20),
             child: const Image(
-              image: AssetImage('assets/images/ts_10_11019a.jpg'),
+              image: AssetImage('assets/images/cartaoCredito/ts_10_11019a.jpg'),
               height: 350,
             ),
           ),
