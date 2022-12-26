@@ -612,7 +612,7 @@ const DUMMY_PRATOS = const [
       id: '6',
       title: 'Espaguete com camarão',
       color: Colors.grey,
-      imagem: 'assets/images/pratos/frutos _do_mar/camarao-espaguete.jpg',
+      imagem: 'assets/images/pratos/frutos_do_mar/camarao-espaguete.jpg',
       descricao: 'Espaguete com camarão a milanesa',
       preco: 35.00,
       observacao: '',
