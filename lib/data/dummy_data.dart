@@ -569,7 +569,7 @@ const DUMMY_PRATOS = const [
       preco: 45.00,
       observacao: '',
       tempoPreparo: '30 minutos',
-      ingredientes: ['Carne de Sol'],
+      ingredientes: ['Carne de Sol','Charque'],
       modoPreparo: ''),
   Prato(
       id: '3',
