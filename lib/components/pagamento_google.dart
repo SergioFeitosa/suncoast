@@ -61,7 +61,7 @@ class _PaySampleAppState extends State<PaySampleApp> {
       backgroundColor: Colors.white,
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        children: [
+        children: <Widget> [
           Container(
             margin: const EdgeInsets.symmetric(vertical: 20),
             child: const Image(

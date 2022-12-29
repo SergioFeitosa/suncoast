@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:suncoast/pages/credit_card_page.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:pay/pay.dart';
 import '../data/dummy_data.dart';
+
+const _paymentItems = [
+  PaymentItem(
+    label: 'Total',
+    amount: '99.99',
+    status: PaymentItemStatus.final_price,
+  )
+];
 
 class PedidoPage extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
@@ -10,8 +19,45 @@ class PedidoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Pay for Flutter Demo',
+      // ignore: prefer_const_literals_to_create_immutables
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      // ignore: prefer_const_literals_to_create_immutables
+      supportedLocales: [
+        const Locale('en', ''),
+        const Locale('es', ''),
+        const Locale('de', ''),
+      ],
+      home: PaySampleApp(),
+    );
+  }
+}
+
+class PaySampleApp extends StatefulWidget {
+  // ignore: prefer_const_constructors_in_immutables
+  PaySampleApp({Key? key}) : super(key: key);
+
+  @override
+  _PaySampleAppState createState() => _PaySampleAppState();
+}
+
+class _PaySampleAppState extends State<PaySampleApp> {
+  void onGooglePayResult(paymentResult) {
+    debugPrint(paymentResult.toString());
+  }
+
+  void onApplePayResult(paymentResult) {
+    debugPrint(paymentResult.toString());
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final tabelaPedido = DUMMY_PEDIDOS
-        .where((pedido) => (pedido.telefone.contains(telefone)))
+        .where((pedido) => (pedido.telefone.contains('11982551256')))
         .toList();
 
     double total = 0.0;
@@ -73,13 +119,37 @@ class PedidoPage extends StatelessWidget {
               separatorBuilder: (_, __) => const Divider(),
             ),
           ),
+          Expanded(
+            child: ListView(
+              children: <Widget>[
+                GooglePayButton(
+                  paymentConfigurationAsset:
+                      'default_payment_profile_google_pay.json',
+                  paymentItems: _paymentItems,
+                  type: GooglePayButtonType.buy,
+                  margin: const EdgeInsets.only(top: 15.0),
+                  onPaymentResult: onGooglePayResult,
+                  loadingIndicator: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+                ApplePayButton(
+                  paymentConfigurationAsset:
+                      'default_payment_profile_apple_pay.json',
+                  paymentItems: _paymentItems,
+                  style: ApplePayButtonStyle.black,
+                  type: ApplePayButtonType.buy,
+                  margin: const EdgeInsets.only(top: 15.0),
+                  onPaymentResult: onApplePayResult,
+                  loadingIndicator: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+                const SizedBox(height: 15)
+              ],
+            ),
+          ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _settingModalBottomSheet(context, total);
-        },
-        child: const Icon(Icons.add),
       ),
     );
   }
@@ -88,27 +158,34 @@ class PedidoPage extends StatelessWidget {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext bc) {
-          return Wrap(
+          return ListView(
             children: <Widget>[
-              ListTile(
-                onTap: () async {
-                      await Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => CreditCardPage(
-                          total: total, // The page you want
-                        ),
-                      ));
-                    },
-                leading: Text(
-                  'Valor Total $total',
-                  style: const TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                  ),
+              GooglePayButton(
+                paymentConfigurationAsset:
+                    'default_payment_profile_google_pay.json',
+                paymentItems: _paymentItems,
+                type: GooglePayButtonType.buy,
+                margin: const EdgeInsets.only(top: 15.0),
+                onPaymentResult: onGooglePayResult,
+                loadingIndicator: const Center(
+                  child: CircularProgressIndicator(),
                 ),
-              )
+              ),
+              ApplePayButton(
+                paymentConfigurationAsset:
+                    'default_payment_profile_apple_pay.json',
+                paymentItems: _paymentItems,
+                style: ApplePayButtonStyle.black,
+                type: ApplePayButtonType.buy,
+                margin: const EdgeInsets.only(top: 15.0),
+                onPaymentResult: onApplePayResult,
+                loadingIndicator: const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+              const SizedBox(height: 15)
             ],
           );
         });
   }
-
 }
