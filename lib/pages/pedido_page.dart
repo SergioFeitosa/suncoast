@@ -120,6 +120,16 @@ class _PaySampleAppState extends State<PaySampleApp> {
             ),
           ),
           Expanded(
+              child:
+                  ListView(padding: const EdgeInsets.all(8), children: <Widget>[
+            Container(
+              margin: const EdgeInsets.only(top: 200.0),
+              height: 50,
+              color: Colors.amber[600],
+              child: Center(child: Text(' Total:  $total')),
+            ),
+          ])),
+          Expanded(
             child: ListView(
               children: <Widget>[
                 GooglePayButton(
@@ -127,7 +137,7 @@ class _PaySampleAppState extends State<PaySampleApp> {
                       'default_payment_profile_google_pay.json',
                   paymentItems: _paymentItems,
                   type: GooglePayButtonType.buy,
-                  margin: const EdgeInsets.only(top: 15.0),
+                  margin: const EdgeInsets.only(top: 200.0),
                   onPaymentResult: onGooglePayResult,
                   loadingIndicator: const Center(
                     child: CircularProgressIndicator(),
@@ -139,53 +149,17 @@ class _PaySampleAppState extends State<PaySampleApp> {
                   paymentItems: _paymentItems,
                   style: ApplePayButtonStyle.black,
                   type: ApplePayButtonType.buy,
-                  margin: const EdgeInsets.only(top: 15.0),
+                  margin: const EdgeInsets.only(top: 200.0),
                   onPaymentResult: onApplePayResult,
                   loadingIndicator: const Center(
                     child: CircularProgressIndicator(),
                   ),
                 ),
-                const SizedBox(height: 15)
               ],
             ),
           ),
         ],
       ),
     );
-  }
-
-  void _settingModalBottomSheet(context, double total) {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext bc) {
-          return ListView(
-            children: <Widget>[
-              GooglePayButton(
-                paymentConfigurationAsset:
-                    'default_payment_profile_google_pay.json',
-                paymentItems: _paymentItems,
-                type: GooglePayButtonType.buy,
-                margin: const EdgeInsets.only(top: 15.0),
-                onPaymentResult: onGooglePayResult,
-                loadingIndicator: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
-              ApplePayButton(
-                paymentConfigurationAsset:
-                    'default_payment_profile_apple_pay.json',
-                paymentItems: _paymentItems,
-                style: ApplePayButtonStyle.black,
-                type: ApplePayButtonType.buy,
-                margin: const EdgeInsets.only(top: 15.0),
-                onPaymentResult: onApplePayResult,
-                loadingIndicator: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
-              const SizedBox(height: 15)
-            ],
-          );
-        });
   }
 }
