@@ -3,16 +3,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pay/pay.dart';
 import '../data/dummy_data.dart';
 
-const _paymentItems = [
-  PaymentItem(
-    label: 'Total',
-    amount: '99.99',
-    status: PaymentItemStatus.final_price,
-  )
-];
-
-double total = 0.0;
-
 class PedidoPage extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final telefone;
@@ -56,12 +46,27 @@ class _PaySampleAppState extends State<PaySampleApp> {
     debugPrint(paymentResult.toString());
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final tabelaPedido = DUMMY_PEDIDOS
+  double total = 0.0;
+
+  List tabelaPedido = [];
+
+  Future<List> getTabelaPedido() async {
+    tabelaPedido = DUMMY_PEDIDOS
         .where((pedido) => (pedido.telefone.contains('11982551256')))
         .toList();
+    return tabelaPedido;
+  }
 
+  late final _paymentItems = [
+    const PaymentItem(
+      label: 'Total',
+      amount: '99.99',
+      status: PaymentItemStatus.final_price,
+    )
+  ];
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -69,78 +74,83 @@ class _PaySampleAppState extends State<PaySampleApp> {
           style: TextStyle(fontSize: 16),
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.separated(
-              // ignore: unnecessary_null_comparison
-              itemCount: tabelaPedido == null ? 0 : tabelaPedido.length,
-              itemBuilder: (BuildContext context, int pedidoidx) {
-                final tabelaPrato = DUMMY_PRATOS
-                    .where((prato) =>
-                        (tabelaPedido[pedidoidx].itens.contains(prato.id)))
-                    .toList();
+      body: FutureBuilder(
+        future: getTabelaPedido(),
+        builder: (context, snapshot) {
+          return Column(
+            children: [
+              Expanded(
+                child: ListView.separated(
+                  // ignore: unnecessary_null_comparison
+                  itemCount: tabelaPedido.length,
+                  itemBuilder: (BuildContext context, int pedidoidx) {
+                    final tabelaPrato = DUMMY_PRATOS
+                        .where((prato) =>
+                            (tabelaPedido[pedidoidx].itens.contains(prato.id)))
+                        .toList();
 
-                List<Widget> widgtes = [];
+                    List<Widget> widgtes = [];
 
-                for (int index = 0;
-                    index < tabelaPedido[pedidoidx].itens.length;
-                    index++) {
-                  ///
-                  total += tabelaPrato[index].preco;
+                    for (int index = 0;
+                        index < tabelaPedido[pedidoidx].itens.length;
+                        index++) {
+                      ///
+                      total += tabelaPrato[index].preco;
 
-                  ///just to print out
-                  widgtes.add(ListTile(
-                    onTap: () => {},
-                    leading: Text('  ${tabelaPrato[index].title}'),
-                    title: Text('  ${tabelaPedido[pedidoidx].local}'),
-                    trailing: Text('${tabelaPrato[index].preco}'),
-                  ));
-                }
-                return Column(
-                  children: widgtes,
-                );
-              },
-              padding: const EdgeInsets.all(16),
-              separatorBuilder: (_, __) => const Divider(),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10.0),
-            height: 50,
-            color: Colors.amber[600],
-            child: Center(child: Text(' Total:  $total')),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-            height: 50,
-            child: ListView(
-              children: <Widget>[
-                GooglePayButton(
-                  paymentConfigurationAsset:
-                      'default_payment_profile_google_pay.json',
-                  paymentItems: _paymentItems,
-                  type: GooglePayButtonType.buy,
-                  onPaymentResult: onGooglePayResult,
-                  loadingIndicator: const Center(
-                    child: CircularProgressIndicator(),
-                  ),
+                      ///just to print out
+                      widgtes.add(ListTile(
+                        onTap: () => {},
+                        leading: Text('  ${tabelaPrato[index].title}'),
+                        title: Text('  ${tabelaPedido[pedidoidx].local}'),
+                        trailing: Text('${tabelaPrato[index].preco}'),
+                      ));
+                    }
+                    return Column(
+                      children: widgtes,
+                    );
+                  },
+                  padding: const EdgeInsets.all(16),
+                  separatorBuilder: (_, __) => const Divider(),
                 ),
-                ApplePayButton(
-                  paymentConfigurationAsset:
-                      'default_payment_profile_apple_pay.json',
-                  paymentItems: _paymentItems,
-                  style: ApplePayButtonStyle.black,
-                  type: ApplePayButtonType.buy,
-                  onPaymentResult: onApplePayResult,
-                  loadingIndicator: const Center(
-                    child: CircularProgressIndicator(),
-                  ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10.0),
+                height: 50,
+                color: Colors.amber[600],
+                child: Center(child: Text(' Total:  $total')),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                height: 50,
+                child: ListView(
+                  children: <Widget>[
+                    GooglePayButton(
+                      paymentConfigurationAsset:
+                          'default_payment_profile_google_pay.json',
+                      paymentItems: _paymentItems,
+                      type: GooglePayButtonType.buy,
+                      onPaymentResult: onGooglePayResult,
+                      loadingIndicator: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                    ApplePayButton(
+                      paymentConfigurationAsset:
+                          'default_payment_profile_apple_pay.json',
+                      paymentItems: _paymentItems,
+                      style: ApplePayButtonStyle.black,
+                      type: ApplePayButtonType.buy,
+                      onPaymentResult: onApplePayResult,
+                      loadingIndicator: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          )
-        ],
+              )
+            ],
+          );
+        },
       ),
     );
   }
