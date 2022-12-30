@@ -11,6 +11,8 @@ const _paymentItems = [
   )
 ];
 
+double total = 0.0;
+
 class PedidoPage extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final telefone;
@@ -60,8 +62,6 @@ class _PaySampleAppState extends State<PaySampleApp> {
         .where((pedido) => (pedido.telefone.contains('11982551256')))
         .toList();
 
-    double total = 0.0;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -71,20 +71,6 @@ class _PaySampleAppState extends State<PaySampleApp> {
       ),
       body: Column(
         children: [
-          const ListTile(
-            leading: Text(
-              'Item',
-              style: TextStyle(fontSize: 16),
-            ),
-            title: Text(
-              'Local',
-              style: TextStyle(fontSize: 16),
-            ),
-            trailing: Text(
-              'Preço',
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
           Expanded(
             child: ListView.separated(
               // ignore: unnecessary_null_comparison
@@ -108,7 +94,7 @@ class _PaySampleAppState extends State<PaySampleApp> {
                     onTap: () => {},
                     leading: Text('  ${tabelaPrato[index].title}'),
                     title: Text('  ${tabelaPedido[pedidoidx].local}'),
-                    trailing: Text('  $total'),
+                    trailing: Text('${tabelaPrato[index].preco}'),
                   ));
                 }
                 return Column(
@@ -119,17 +105,15 @@ class _PaySampleAppState extends State<PaySampleApp> {
               separatorBuilder: (_, __) => const Divider(),
             ),
           ),
-          Expanded(
-              child:
-                  ListView(padding: const EdgeInsets.all(8), children: <Widget>[
-            Container(
-              margin: const EdgeInsets.only(top: 200.0),
-              height: 50,
-              color: Colors.amber[600],
-              child: Center(child: Text(' Total:  $total')),
-            ),
-          ])),
-          Expanded(
+          Container(
+            margin: const EdgeInsets.only(top: 10.0),
+            height: 50,
+            color: Colors.amber[600],
+            child: Center(child: Text(' Total:  $total')),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+            height: 50,
             child: ListView(
               children: <Widget>[
                 GooglePayButton(
@@ -137,7 +121,6 @@ class _PaySampleAppState extends State<PaySampleApp> {
                       'default_payment_profile_google_pay.json',
                   paymentItems: _paymentItems,
                   type: GooglePayButtonType.buy,
-                  margin: const EdgeInsets.only(top: 200.0),
                   onPaymentResult: onGooglePayResult,
                   loadingIndicator: const Center(
                     child: CircularProgressIndicator(),
@@ -149,7 +132,6 @@ class _PaySampleAppState extends State<PaySampleApp> {
                   paymentItems: _paymentItems,
                   style: ApplePayButtonStyle.black,
                   type: ApplePayButtonType.buy,
-                  margin: const EdgeInsets.only(top: 200.0),
                   onPaymentResult: onApplePayResult,
                   loadingIndicator: const Center(
                     child: CircularProgressIndicator(),
@@ -157,7 +139,7 @@ class _PaySampleAppState extends State<PaySampleApp> {
                 ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );
