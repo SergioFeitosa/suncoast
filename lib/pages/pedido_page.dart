@@ -108,9 +108,33 @@ class _PaySampleAppState extends State<PaySampleApp> {
                       ///just to print out
                       widgtes.add(ListTile(
                         onTap: () => {},
-                        leading: Text('  ${tabelaPrato[index].title}'),
-                        title: Text('  ${tabelaPedido[pedidoidx].local}'),
-                        trailing: Text('${tabelaPrato[index].preco}'),
+                        leading: Text(
+                          '  ${tabelaPrato[index].title}',
+                          textAlign: TextAlign.right,
+                          style: const TextStyle(
+                            fontSize: 15.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        title: Text(
+                          '  ${tabelaPedido[pedidoidx].local}',
+                          textAlign: TextAlign.right,
+                          style: const TextStyle(
+                            fontSize: 13.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        trailing: Text(
+                          '${tabelaPrato[index].preco}',
+                          textAlign: TextAlign.right,
+                          style: const TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ));
                     }
                     return Column(
