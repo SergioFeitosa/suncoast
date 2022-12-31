@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pay/pay.dart';
+import 'package:suncoast/models/pedido.dart';
 import '../data/dummy_data.dart';
 
 class PedidoPage extends StatelessWidget {
@@ -48,7 +49,7 @@ class _PaySampleAppState extends State<PaySampleApp> {
 
   double total = 0.0;
 
-  List tabelaPedido = [];
+  List<Pedido> tabelaPedido = [];
 
   Future<List> getTabelaPedido() async {
     tabelaPedido = DUMMY_PEDIDOS
@@ -57,13 +58,20 @@ class _PaySampleAppState extends State<PaySampleApp> {
     return tabelaPedido;
   }
 
-  late final _paymentItems = [
-    const PaymentItem(
-      label: 'Total',
-      amount: '99.99',
-      status: PaymentItemStatus.final_price,
-    )
-  ];
+  final List<PaymentItem> _paymentItems = [];
+
+  Future<List> _getPaymentItem() async {
+    _paymentItems.add(
+      PaymentItem(
+        label: 'Total',
+        amount: total.toString(),
+        status: PaymentItemStatus.final_price,
+      ),
+    );
+    // ignore: avoid_print
+    print('$total.toString()');
+    return _paymentItems;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,35 +127,40 @@ class _PaySampleAppState extends State<PaySampleApp> {
                 color: Colors.amber[600],
                 child: Center(child: Text(' Total:  $total')),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                height: 50,
-                child: ListView(
-                  children: <Widget>[
-                    GooglePayButton(
-                      paymentConfigurationAsset:
-                          'default_payment_profile_google_pay.json',
-                      paymentItems: _paymentItems,
-                      type: GooglePayButtonType.buy,
-                      onPaymentResult: onGooglePayResult,
-                      loadingIndicator: const Center(
-                        child: CircularProgressIndicator(),
-                      ),
+              FutureBuilder(
+                future: _getPaymentItem(),
+                builder: (context, snapshot) {
+                  return Container(
+                    margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    height: 50,
+                    child: ListView(
+                      children: <Widget>[
+                        GooglePayButton(
+                          paymentConfigurationAsset:
+                              'default_payment_profile_google_pay.json',
+                          paymentItems: _paymentItems,
+                          type: GooglePayButtonType.buy,
+                          onPaymentResult: onGooglePayResult,
+                          loadingIndicator: const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        ),
+                        ApplePayButton(
+                          paymentConfigurationAsset:
+                              'default_payment_profile_apple_pay.json',
+                          paymentItems: _paymentItems,
+                          style: ApplePayButtonStyle.black,
+                          type: ApplePayButtonType.buy,
+                          onPaymentResult: onApplePayResult,
+                          loadingIndicator: const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        ),
+                      ],
                     ),
-                    ApplePayButton(
-                      paymentConfigurationAsset:
-                          'default_payment_profile_apple_pay.json',
-                      paymentItems: _paymentItems,
-                      style: ApplePayButtonStyle.black,
-                      type: ApplePayButtonType.buy,
-                      onPaymentResult: onApplePayResult,
-                      loadingIndicator: const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    ),
-                  ],
-                ),
-              )
+                  );
+                },
+              ),
             ],
           );
         },
