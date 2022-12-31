@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pay/pay.dart';
 import 'package:suncoast/models/pedido.dart';
 import '../data/dummy_data.dart';
+import 'package:intl/intl.dart';
 
 class PedidoPage extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
@@ -52,6 +53,8 @@ class _PaySampleAppState extends State<PaySampleApp> {
   List<Pedido> tabelaPedido = [];
 
   Future<List> getTabelaPedido() async {
+    total = 0;
+
     tabelaPedido = DUMMY_PEDIDOS
         .where((pedido) => (pedido.telefone.contains('11982551256')))
         .toList();
@@ -98,7 +101,6 @@ class _PaySampleAppState extends State<PaySampleApp> {
                         .toList();
 
                     List<Widget> widgtes = [];
-
                     for (int index = 0;
                         index < tabelaPedido[pedidoidx].itens.length;
                         index++) {
@@ -127,10 +129,10 @@ class _PaySampleAppState extends State<PaySampleApp> {
                           ),
                         ),
                         trailing: Text(
-                          '${tabelaPrato[index].preco}',
+                          tabelaPrato[index].preco.toStringAsFixed(2),
                           textAlign: TextAlign.right,
                           style: const TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 14.0,
                             color: Colors.black,
                             fontWeight: FontWeight.w600,
                           ),
@@ -149,7 +151,15 @@ class _PaySampleAppState extends State<PaySampleApp> {
                 margin: const EdgeInsets.only(top: 10.0),
                 height: 50,
                 color: Colors.amber[600],
-                child: Center(child: Text(' Total:  $total')),
+                child: Center(
+                    child: Text(
+                  "Total: '${NumberFormat.currency(locale: 'pt-BR').format(total)}",
+                  style: const TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
+                  ),
+                )),
               ),
               FutureBuilder(
                 future: _getPaymentItem(),

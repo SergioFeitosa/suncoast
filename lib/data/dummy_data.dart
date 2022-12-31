@@ -569,7 +569,7 @@ const DUMMY_PRATOS = const [
       preco: 45.00,
       observacao: '',
       tempoPreparo: '30 minutos',
-      ingredientes: ['Carne de Sol','Charque'],
+      ingredientes: ['Carne de Sol', 'Charque'],
       modoPreparo: ''),
   Prato(
       id: '3',
@@ -633,7 +633,7 @@ const DUMMY_PEDIDOS = [
   ),
   Pedido(
     id: '2',
-    local: 'mesa01',
+    local: 'mesa02',
     itens: ['4', '5', '6'],
     horaPedido: '12:00',
     horaEntrega: '12:25',
@@ -641,15 +641,15 @@ const DUMMY_PEDIDOS = [
   ),
   Pedido(
     id: '3',
-    local: '3',
+    local: 'mesa03',
     itens: ['1', '2', '3'],
     horaPedido: '12:00',
     horaEntrega: '12:25',
-    telefone: '11982551256',
+    telefone: '83991377693',
   ),
   Pedido(
     id: '4',
-    local: '1',
+    local: 'mesa04',
     itens: ['1', '2', '3'],
     horaPedido: '12:00',
     horaEntrega: '12:25',
@@ -657,7 +657,7 @@ const DUMMY_PEDIDOS = [
   ),
   Pedido(
     id: '5',
-    local: '3',
+    local: 'mesa05',
     itens: ['1', '2', '3'],
     horaPedido: '12:00',
     horaEntrega: '12:25',
