@@ -55,7 +55,7 @@ class _PaySampleAppState extends State<PaySampleApp> {
   Future<List> getTabelaPedido() async {
     total = 0;
 
-    tabelaPedido = DUMMY_PEDIDOS
+    tabelaPedido = DUMMY_PEDIDO
         .where((pedido) => (pedido.telefone.contains('11982551256')))
         .toList();
     return tabelaPedido;
@@ -90,12 +90,41 @@ class _PaySampleAppState extends State<PaySampleApp> {
         builder: (context, snapshot) {
           return Column(
             children: [
+              const ListTile(
+                leading: Text(
+                  'Qtde        ',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                title: Text(
+                  'Item / Local',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 13.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                trailing: Text(
+                  'Preço        ',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
               Expanded(
                 child: ListView.separated(
                   // ignore: unnecessary_null_comparison
                   itemCount: tabelaPedido.length,
                   itemBuilder: (BuildContext context, int pedidoidx) {
-                    final tabelaPrato = DUMMY_PRATOS
+                    final tabelaPrato = DUMMY_PRATO
                         .where((prato) =>
                             (tabelaPedido[pedidoidx].itens.contains(prato.id)))
                         .toList();
@@ -105,14 +134,15 @@ class _PaySampleAppState extends State<PaySampleApp> {
                         index < tabelaPedido[pedidoidx].itens.length;
                         index++) {
                       ///
-                      total += tabelaPrato[index].preco;
+                      total += tabelaPrato[index].preco *
+                          double.parse(tabelaPedido[pedidoidx].quantidade);
 
                       ///just to print out
                       widgtes.add(ListTile(
                         onTap: () => {},
                         leading: Text(
-                          '  ${tabelaPrato[index].title}',
-                          textAlign: TextAlign.right,
+                          '  ${tabelaPedido[pedidoidx].quantidade}',
+                          textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 15.0,
                             color: Colors.black,
@@ -120,16 +150,28 @@ class _PaySampleAppState extends State<PaySampleApp> {
                           ),
                         ),
                         title: Text(
-                          '  ${tabelaPedido[pedidoidx].local}',
-                          textAlign: TextAlign.right,
+                          '  ${tabelaPrato[index].title}',
+                          textAlign: TextAlign.left,
                           style: const TextStyle(
                             fontSize: 13.0,
                             color: Colors.black,
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        subtitle: Text(
+                          '  ${tabelaPedido[pedidoidx].local}',
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                            fontSize: 13.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w300,
                           ),
                         ),
                         trailing: Text(
-                          tabelaPrato[index].preco.toStringAsFixed(2),
+                          (tabelaPrato[index].preco *
+                                  double.parse(
+                                      tabelaPedido[pedidoidx].quantidade))
+                              .toStringAsFixed(2),
                           textAlign: TextAlign.right,
                           style: const TextStyle(
                             fontSize: 14.0,

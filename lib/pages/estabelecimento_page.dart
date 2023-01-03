@@ -21,7 +21,7 @@ class EstabelecimentoPage extends StatelessWidget {
     final tipoEstabelecimento =
         ModalRoute.of(context)?.settings.arguments as TipoEstabelecimento;
 
-    final tabela = DUMMY_TIPO_ESTABELECIMENTOS
+    final tabela = DUMMY_TIPO_ESTABELECIMENTO
         .where((estabelecimento) =>
             praia.tipoEstabelecimentos.contains(estabelecimento.id))
         .toList();

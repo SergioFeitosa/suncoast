@@ -1,4 +1,3 @@
-
 class Pedido {
   final String id;
   final String local;
@@ -6,6 +5,7 @@ class Pedido {
   final String horaPedido;
   final String horaEntrega;
   final String telefone;
+  final String quantidade;
 
   const Pedido({
     required this.id,
@@ -14,5 +14,6 @@ class Pedido {
     required this.horaPedido,
     required this.horaEntrega,
     required this.telefone,
+    required this.quantidade,
   });
 }

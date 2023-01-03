@@ -11,7 +11,7 @@ class BarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final bar = ModalRoute.of(context)?.settings.arguments as Bar;
 
-    final tabela = DUMMY_CATEGORIAS
+    final tabela = DUMMY_CATEGORIA
         .where((categoria) => bar.categorias.contains(categoria.id))
         .toList();
 

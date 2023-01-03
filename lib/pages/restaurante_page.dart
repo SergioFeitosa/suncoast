@@ -22,7 +22,7 @@ class RestaurantePage extends StatelessWidget {
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
         ),
-        children: DUMMY_CATEGORIAS.map((cat) {
+        children: DUMMY_CATEGORIA.map((cat) {
           return CategoriaItem(categoria: cat);
         }).toList(),
       ),

@@ -18,8 +18,9 @@ class PraiaBarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final praia = ModalRoute.of(context)?.settings.arguments as Praia;
 
-    final tabela =
-        DUMMY_BARES.where((bar) => praia.bares.contains(bar.id)).toList();
+    final tabela = DUMMY_BAR
+        .where((bar) => praia.aluguelderoupas.contains(bar.id))
+        .toList();
 
     return Scaffold(
       appBar: AppBar(

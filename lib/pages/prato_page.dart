@@ -20,9 +20,9 @@ class PratoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     String localPedido = 'mesa01';
     String telefone = '11982551256';
-    double? quantidade = 0;
+    double quantidade = 0;
 
-    List<Prato> tabela = DUMMY_PRATOS
+    List<Prato> tabela = DUMMY_PRATO
         // ignore: unrelated_type_equality_checks
         .where((prato) => (prato.id.contains((pratoEscolhido + 1).toString())))
         .toList();
@@ -54,13 +54,14 @@ class PratoPage extends StatelessWidget {
                     style: TextButton.styleFrom(foregroundColor: Colors.white),
                     onPressed: () async {
                       await gravarPedido(
+                        id: '6',
                         bar: bar,
                         quantidade: quantidade,
                         item: tabela[0].id,
                         local: localPedido,
-                        id: '1',
                         horaPedido: '12:00',
                         telefone: '11982551256',
+                        observacao: '',
                       );
                     },
                     child: const Text('Adicionar Item'),
@@ -239,8 +240,9 @@ gravarPedido({
   required String id,
   required Bar bar,
   required String local,
-  required double? quantidade,
   required String item,
+  required double quantidade,
+  required String observacao,
   required String horaPedido,
   required String telefone,
 }) {
@@ -249,6 +251,7 @@ gravarPedido({
   print(local);
   print(quantidade);
   print(item);
+  print(observacao);
   print(horaPedido);
   print(telefone);
 }

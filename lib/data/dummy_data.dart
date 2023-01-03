@@ -1,8 +1,11 @@
 // ignore: duplicate_ignore
-// ignore_for_file: constant_identifier_names, duplicate_ignore
+// ignore_for_file: constant_identifier_names, duplicate_ignore, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:suncoast/models/alugueldeveiculos.dart';
+import 'package:suncoast/models/artesanato.dart';
 import 'package:suncoast/models/bar.dart';
+import 'package:suncoast/models/bebida.dart';
 import 'package:suncoast/models/categoria.dart';
 import 'package:suncoast/models/estabelecimento.dart';
 import 'package:suncoast/models/estado.dart';
@@ -11,6 +14,7 @@ import 'package:suncoast/models/pedido.dart';
 import 'package:suncoast/models/prato.dart';
 import 'package:suncoast/models/restaurante.dart';
 
+import '../models/aluguelderoupas.dart';
 import '../models/praia.dart';
 
 // ignore: constant_identifier_names, unnecessary_const
@@ -328,195 +332,330 @@ const DUMMY_PRAIAS = [
       nome: 'Bessa',
       temperatura: 27,
       tipoEstabelecimentos: ['1'],
-      bares: ['1'],
-      restaurantes: ['1']),
+      aluguelderoupas: ['1'],
+      alugueldeveiculos: [],
+      artesanato: [],
+      bar: [],
+      farmacia: [],
+      feirinha: [],
+      hamburgueria: [],
+      lojaderoupas: [],
+      materialdeconstrucao: [],
+      padaria: [],
+      pizzaria: [],
+      quiosque: [],
+      restaurante: [],
+      salaodebeleza: [],
+      shopping: [],
+      supermercado: []),
   Praia(
       id: '2',
       imagem: 'assets/images/praias/praia-manaira.jpg',
       nome: 'Manaíra',
       temperatura: 27,
       tipoEstabelecimentos: ['1'],
-      bares: ['1'],
-      restaurantes: ['1']),
+      aluguelderoupas: [],
+      alugueldeveiculos: [],
+      artesanato: [],
+      bar: [],
+      farmacia: [],
+      feirinha: [],
+      hamburgueria: [],
+      lojaderoupas: [],
+      materialdeconstrucao: [],
+      padaria: [],
+      pizzaria: [],
+      quiosque: [],
+      restaurante: [],
+      salaodebeleza: [],
+      shopping: [],
+      supermercado: []),
   Praia(
       id: '3',
       imagem: 'assets/images/praias/praia-cabo-branco.jpg',
       nome: 'Cabo Branco',
       temperatura: 27,
-      tipoEstabelecimentos: [
-        '1',
-        '2',
-        '3'
-      ],
-      bares: [
-        '1',
-        '2',
-        '3',
-        '4',
-      ],
-      restaurantes: [
-        '1'
-      ]),
+      tipoEstabelecimentos: ['1'],
+      aluguelderoupas: ['1'],
+      alugueldeveiculos: [],
+      artesanato: [],
+      bar: [],
+      farmacia: [],
+      feirinha: [],
+      hamburgueria: [],
+      lojaderoupas: [],
+      materialdeconstrucao: [],
+      padaria: [],
+      pizzaria: [],
+      quiosque: [],
+      restaurante: [],
+      salaodebeleza: [],
+      shopping: [],
+      supermercado: []),
   Praia(
       id: '4',
       imagem: 'assets/images/cidades/cabedelo.jpg',
       nome: 'Ponta do Seixas',
       temperatura: 27,
       tipoEstabelecimentos: ['1'],
-      bares: ['1'],
-      restaurantes: ['1']),
+      aluguelderoupas: [],
+      alugueldeveiculos: [],
+      artesanato: [],
+      bar: [],
+      farmacia: [],
+      feirinha: [],
+      hamburgueria: [],
+      lojaderoupas: [],
+      materialdeconstrucao: [],
+      padaria: [],
+      pizzaria: [],
+      quiosque: [],
+      restaurante: [],
+      salaodebeleza: [],
+      shopping: [],
+      supermercado: []),
   Praia(
       id: '5',
       imagem: 'assets/images/praias/praia-tambau.jpg',
       nome: 'Tambaú',
       temperatura: 27,
       tipoEstabelecimentos: ['1'],
-      bares: ['1'],
-      restaurantes: ['1']),
+      aluguelderoupas: [],
+      alugueldeveiculos: [],
+      artesanato: [],
+      bar: [],
+      farmacia: [],
+      feirinha: [],
+      hamburgueria: [],
+      lojaderoupas: [],
+      materialdeconstrucao: [],
+      padaria: [],
+      pizzaria: [],
+      quiosque: [],
+      restaurante: [],
+      salaodebeleza: [],
+      shopping: [],
+      supermercado: []),
   Praia(
       id: '6',
       imagem: 'assets/images/cidades/joao-pessoa.jpg',
       nome: 'João Pessoa',
       temperatura: 27,
       tipoEstabelecimentos: ['1'],
-      bares: ['1'],
-      restaurantes: ['1']),
+      aluguelderoupas: [],
+      alugueldeveiculos: [],
+      artesanato: [],
+      bar: [],
+      farmacia: [],
+      feirinha: [],
+      hamburgueria: [],
+      lojaderoupas: [],
+      materialdeconstrucao: [],
+      padaria: [],
+      pizzaria: [],
+      quiosque: [],
+      restaurante: [],
+      salaodebeleza: [],
+      shopping: [],
+      supermercado: []),
   Praia(
       id: '7',
       imagem: 'assets/images/cidades/lucena.jpg',
       nome: 'Lucena',
       temperatura: 27,
       tipoEstabelecimentos: ['1'],
-      bares: ['1'],
-      restaurantes: ['1']),
+      aluguelderoupas: [],
+      alugueldeveiculos: [],
+      artesanato: [],
+      bar: [],
+      farmacia: [],
+      feirinha: [],
+      hamburgueria: [],
+      lojaderoupas: [],
+      materialdeconstrucao: [],
+      padaria: [],
+      pizzaria: [],
+      quiosque: [],
+      restaurante: [],
+      salaodebeleza: [],
+      shopping: [],
+      supermercado: []),
   Praia(
       id: '8',
       imagem: 'assets/images/cidades/marcacao.jpg',
       nome: 'Marcação',
       temperatura: 27,
       tipoEstabelecimentos: ['1'],
-      bares: ['1'],
-      restaurantes: ['1']),
+      aluguelderoupas: [],
+      alugueldeveiculos: [],
+      artesanato: [],
+      bar: [],
+      farmacia: [],
+      feirinha: [],
+      hamburgueria: [],
+      lojaderoupas: [],
+      materialdeconstrucao: [],
+      padaria: [],
+      pizzaria: [],
+      quiosque: [],
+      restaurante: [],
+      salaodebeleza: [],
+      shopping: [],
+      supermercado: []),
   Praia(
       id: '9',
       imagem: 'assets/images/cidades/mataraca.jpg',
       nome: 'Mataraca',
       temperatura: 27,
       tipoEstabelecimentos: ['1'],
-      bares: ['1'],
-      restaurantes: ['1']),
+      aluguelderoupas: [],
+      alugueldeveiculos: [],
+      artesanato: [],
+      bar: [],
+      farmacia: [],
+      feirinha: [],
+      hamburgueria: [],
+      lojaderoupas: [],
+      materialdeconstrucao: [],
+      padaria: [],
+      pizzaria: [],
+      quiosque: [],
+      restaurante: [],
+      salaodebeleza: [],
+      shopping: [],
+      supermercado: []),
   Praia(
       id: '10',
       imagem: 'assets/images/cidades/pitimbu.jpg',
       nome: 'Pitimbú',
       temperatura: 27,
       tipoEstabelecimentos: ['1'],
-      bares: ['1'],
-      restaurantes: ['1']),
+      aluguelderoupas: [],
+      alugueldeveiculos: [],
+      artesanato: [],
+      bar: [],
+      farmacia: [],
+      feirinha: [],
+      hamburgueria: [],
+      lojaderoupas: [],
+      materialdeconstrucao: [],
+      padaria: [],
+      pizzaria: [],
+      quiosque: [],
+      restaurante: [],
+      salaodebeleza: [],
+      shopping: [],
+      supermercado: []),
   Praia(
       id: '11',
       imagem: 'assets/images/cidades/rio-tinto.jpg',
       nome: 'Rio Tinto',
       temperatura: 27,
       tipoEstabelecimentos: ['1'],
-      bares: ['1'],
-      restaurantes: ['1']),
-];
-
-const DUMMY_BARES = [
-  Bar(
-      id: '1',
-      imagem: 'assets/images/praias/praia-bessa.jpg',
-      nome: 'Bar do Zé',
-      pedidos: ['1', '2'],
-      categorias: ['1', '2'],
-      pratosRegionais: ['1', '2', '3'],
-      pratosTradicionais: ['1', '2', '3'],
-      porcoes: ['1', '2', '3']),
-  Bar(
-      id: '2',
-      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
-      nome: 'Bar Bantinho',
-      categorias: ['2'],
-      pedidos: ['1', '2'],
-      pratosRegionais: ['1'],
-      pratosTradicionais: ['1'],
-      porcoes: []),
-  Bar(
-      id: '3',
-      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
-      nome: 'Bar racuda',
-      categorias: ['3'],
-      pedidos: ['1', '2'],
-      pratosRegionais: ['1'],
-      pratosTradicionais: ['2'],
-      porcoes: ['1', '2', '3']),
-  Bar(
-      id: '4',
-      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
-      nome: 'Bar toré',
-      categorias: ['1'],
-      pedidos: ['1', '2'],
-      pratosRegionais: ['1', '2', '3'],
-      pratosTradicionais: ['2'],
-      porcoes: ['2']),
-];
-
-const DUMMY_RESTAURANTES = [
-  Restaurante(
-      id: '1',
-      imagem: 'assets/images/praias/praia-bessa.jpg',
-      nome: 'RESTAURANTE DO zÉ',
-      categorias: ['1']),
-  Restaurante(
-      id: '2',
-      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
-      nome: 'RESTAURANTE Bantinho',
-      categorias: ['2']),
-  Restaurante(
-      id: '3',
-      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
-      nome: 'RESTAURANTE racuda',
-      categorias: ['3']),
-  Restaurante(
-      id: '4',
-      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
-      nome: 'RESTAURANTE toré',
-      categorias: ['4']),
+      aluguelderoupas: [],
+      alugueldeveiculos: [],
+      artesanato: [],
+      bar: [],
+      farmacia: [],
+      feirinha: [],
+      hamburgueria: [],
+      lojaderoupas: [],
+      materialdeconstrucao: [],
+      padaria: [],
+      pizzaria: [],
+      quiosque: [],
+      restaurante: [],
+      salaodebeleza: [],
+      shopping: [],
+      supermercado: []),
 ];
 
 // ignore: unnecessary_const, constant_identifier_names
-const DUMMY_TIPO_ESTABELECIMENTOS = const [
+const DUMMY_TIPO_ESTABELECIMENTO = const [
   Estabelecimento(
     id: '1',
-    title: 'Bares',
+    title: 'Aluguel de Roupas',
     color: Colors.purple,
   ),
   Estabelecimento(
     id: '2',
-    title: 'Shopping',
+    title: 'Aluguel de Veículos',
     color: Colors.red,
   ),
   Estabelecimento(
     id: '3',
-    title: 'Quiosques',
+    title: 'Artesanato',
     color: Colors.orange,
   ),
   Estabelecimento(
     id: '4',
-    title: 'Artesanatos',
+    title: 'Bar',
     color: Colors.cyan,
   ),
   Estabelecimento(
     id: '5',
-    title: 'Feirinhas',
+    title: 'Farmácia',
     color: Colors.grey,
   ),
-  Estabelecimento(id: '6', title: 'Restaurantes', color: Colors.orange),
+  Estabelecimento(
+    id: '6',
+    title: 'Feirinha',
+    color: Colors.orange,
+  ),
+  Estabelecimento(
+    id: '7',
+    title: 'Hamburgueria',
+    color: Colors.orange,
+  ),
+  Estabelecimento(
+    id: '8',
+    title: 'Loja de Roupas',
+    color: Colors.orange,
+  ),
+  Estabelecimento(
+    id: '9',
+    title: 'Material de construção',
+    color: Colors.orange,
+  ),
+  Estabelecimento(
+    id: '10',
+    title: 'Padaria',
+    color: Colors.orange,
+  ),
+  Estabelecimento(
+    id: '11',
+    title: 'Pizzaria',
+    color: Colors.orange,
+  ),
+  Estabelecimento(
+    id: '12',
+    title: 'Quiosque',
+    color: Colors.orange,
+  ),
+  Estabelecimento(
+    id: '13',
+    title: 'Restaurante',
+    color: Colors.orange,
+  ),
+  Estabelecimento(
+    id: '14',
+    title: 'Salão de Beleza',
+    color: Colors.orange,
+  ),
+  Estabelecimento(
+    id: '15',
+    title: 'Shopping',
+    color: Colors.orange,
+  ),
+  Estabelecimento(
+    id: '16',
+    title: 'Super Mercado',
+    color: Colors.orange,
+  ),
 ];
 
 // ignore: unnecessary_const, constant_identifier_names
-const DUMMY_CATEGORIAS = const [
+const DUMMY_CATEGORIA = const [
   Categoria(
     id: '1',
     title: 'Pratos    Regionais',
@@ -545,7 +684,7 @@ const DUMMY_CATEGORIAS = const [
 ];
 
 // ignore: unnecessary_const, constant_identifier_names
-const DUMMY_PRATOS = const [
+const DUMMY_PRATO = const [
   Prato(
       id: '1',
       title: 'Baião de Dois',
@@ -622,7 +761,43 @@ const DUMMY_PRATOS = const [
       modoPreparo: 'Misture tudo'),
 ];
 
-const DUMMY_PEDIDOS = [
+
+const DUMMY_BEBIDA = [
+  Bebida(
+      id: '1',
+      nome: 'Coca Cola',
+      imagem: 'assets/images/bebidas/refrigerantes/cocacola-lata350ml.jpg',
+      descricao:
+          'Refrigerante de Cola',
+      preco: 2.00,
+      ingredientes: ['Cola','Açúcar'],
+      categorias: ['1'],
+  ),
+  Bebida(
+      id: '2',
+      nome: 'Guaraná',
+      imagem: 'assets/images/bebidas/refrigerantes/cocacola-lata350ml.jpg',
+      descricao:
+          'Refrigerante de Guaraná',
+      preco: 2.00,
+      ingredientes: ['Guaraná','Açúcar'],
+      categorias: ['1'],
+  ),
+  Bebida(
+      id: '3',
+      nome: 'Cerveja',
+      imagem: 'assets/images/bebidas/refrigerantes/cocacola-lata350ml.jpg',
+      descricao:
+          'Cerveja',
+      preco: 2.00,
+      ingredientes: ['Malte','Açúcar'],
+      categorias: ['1'],
+  ),
+
+];
+
+// ignore: non_constant_identifier_names
+const DUMMY_PEDIDO = [
   Pedido(
     id: '1',
     local: 'mesa01',
@@ -630,39 +805,186 @@ const DUMMY_PEDIDOS = [
     horaPedido: '12:00',
     horaEntrega: '12:25',
     telefone: '11982551256',
+    quantidade: '1',
   ),
   Pedido(
     id: '2',
-    local: 'mesa02',
-    itens: ['4', '5', '6'],
+    local: 'mesa01',
+    itens: ['1', '2', '3'],
     horaPedido: '12:00',
     horaEntrega: '12:25',
     telefone: '11982551256',
+    quantidade: '1',
   ),
   Pedido(
     id: '3',
-    local: 'mesa03',
+    local: 'mesa01',
     itens: ['1', '2', '3'],
     horaPedido: '12:00',
     horaEntrega: '12:25',
     telefone: '83991377693',
+    quantidade: '1',
   ),
   Pedido(
     id: '4',
-    local: 'mesa04',
+    local: 'mesa01',
     itens: ['1', '2', '3'],
     horaPedido: '12:00',
     horaEntrega: '12:25',
     telefone: '83991377693',
+    quantidade: '1',
   ),
   Pedido(
     id: '5',
-    local: 'mesa05',
+    local: 'mesa01',
     itens: ['1', '2', '3'],
     horaPedido: '12:00',
     horaEntrega: '12:25',
     telefone: '83991377693',
+    quantidade: '1',
   ),
+  Pedido(
+    id: '6',
+    local: 'mesa01',
+    itens: ['1', '2', '3'],
+    horaPedido: '12:00',
+    horaEntrega: '12:25',
+    telefone: '83991377693',
+    quantidade: '1',
+  ),
+];
+
+
+
+const DUMMY_ALUGUELDEROUPAS = [
+  AlugueldeRoupas(
+      id: '1',
+      imagem: 'assets/images/aluguelderoupas/aluguelderoupas.jpg',
+      nome: 'Aluguel de Roupas Dona Maria',
+      categorias: ['1']),
+  AlugueldeRoupas(
+      id: '2',
+      imagem: 'assets/images/aluguelderoupas/aluguelderoupas.jpg',
+      nome: 'Aluguel de Roupas Dona Neusa',
+      categorias: ['2']),
+  AlugueldeRoupas(
+      id: '3',
+      imagem: 'assets/images/aluguelderoupas/aluguelderoupas.jpg',
+      nome: 'Aluguel de Roupas Dona Ondina',
+      categorias: ['3']),
+  AlugueldeRoupas(
+      id: '4',
+      imagem: 'assets/images/aluguelderoupas/aluguelderoupas.jpg',
+      nome: 'Aluguel de Roupas Dona Olivia',
+      categorias: ['4']),
+];
+
+const DUMMY_ALUGUELDEVEICULOS = [
+  AlugueldeVeiculos(
+      id: '1',
+      imagem: 'assets/images/aluguelderoupas/alugueldeveiculos.jpg',
+      nome: 'Aluguel de Veículos Carro01',
+      categorias: ['1']),
+  AlugueldeVeiculos(
+      id: '2',
+      imagem: 'assets/images/aluguelderoupas/alugueldeveiculos.jpg',
+      nome: 'Aluguel de Veículos Carro02',
+      categorias: ['2']),
+  AlugueldeVeiculos(
+      id: '3',
+      imagem: 'assets/images/aluguelderoupas/alugueldeveiculos.jpg',
+      nome: 'Aluguel de Veículos Carro03',
+      categorias: ['3']),
+  AlugueldeVeiculos(
+      id: '4',
+      imagem: 'assets/images/aluguelderoupas/alugueldeveiculos.jpg',
+      nome: 'Aluguel de Veículos Carro04',
+      categorias: ['4']),
+];
+
+const DUMMY_ARTESANATO = [
+  Artesanato(
+      id: '1',
+      imagem: 'assets/images/artesanato/artesanato.jpg',
+      nome: 'Artesanato01',
+      categorias: ['1']),
+  Artesanato(
+      id: '2',
+      imagem: 'assets/images/artesanato/artesanato.jpg',
+      nome: 'Artesanato02',
+      categorias: ['2']),
+  Artesanato(
+      id: '3',
+      imagem: 'assets/images/artesanato/artesanato.jpg',
+      nome: 'Artesanato03',
+      categorias: ['3']),
+  Artesanato(
+      id: '4',
+      imagem: 'assets/images/artesanato/artesanato.jpg',
+      nome: 'Artesanato04',
+      categorias: ['4']),
+];
+
+const DUMMY_BAR = [
+  Bar(
+      id: '1',
+      imagem: 'assets/images/praias/praia-bessa.jpg',
+      nome: 'Bar do Zé',
+      pedidos: ['1', '2'],
+      categorias: ['1', '2'],
+      pratosRegionais: ['1', '2', '3'],
+      pratosTradicionais: ['1', '2', '3'],
+      porcoes: ['1', '2', '3']),
+  Bar(
+      id: '2',
+      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
+      nome: 'Bar Bantinho',
+      categorias: ['2'],
+      pedidos: ['1', '2'],
+      pratosRegionais: ['1'],
+      pratosTradicionais: ['1'],
+      porcoes: []),
+  Bar(
+      id: '3',
+      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
+      nome: 'Bar racuda',
+      categorias: ['3'],
+      pedidos: ['1', '2'],
+      pratosRegionais: ['1'],
+      pratosTradicionais: ['2'],
+      porcoes: ['1', '2', '3']),
+  Bar(
+      id: '4',
+      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
+      nome: 'Bar toré',
+      categorias: ['1'],
+      pedidos: ['1', '2'],
+      pratosRegionais: ['1', '2', '3'],
+      pratosTradicionais: ['2'],
+      porcoes: ['2']),
+];
+
+const DUMMY_RESTAURANTE = [
+  Restaurante(
+      id: '1',
+      imagem: 'assets/images/praias/praia-bessa.jpg',
+      nome: 'RESTAURANTE DO zÉ',
+      categorias: ['1']),
+  Restaurante(
+      id: '2',
+      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
+      nome: 'RESTAURANTE Bantinho',
+      categorias: ['2']),
+  Restaurante(
+      id: '3',
+      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
+      nome: 'RESTAURANTE racuda',
+      categorias: ['3']),
+  Restaurante(
+      id: '4',
+      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
+      nome: 'RESTAURANTE toré',
+      categorias: ['4']),
 ];
 
 const List<String> DUMMY_IMAGES_PRATOS_REGIONAIS = [
