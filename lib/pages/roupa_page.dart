@@ -5,7 +5,7 @@ import 'package:input_quantity/input_quantity.dart';
 import 'package:suncoast/data/dummy_data.dart';
 import 'package:suncoast/models/aluguelderoupas.dart';
 import 'package:suncoast/models/roupa.dart';
-import 'package:suncoast/pages/pedido_page.dart';
+import 'package:suncoast/pages/pedido_roupa_page.dart';
 
 // ignore: must_be_immutable
 class RoupaPage extends StatelessWidget {
@@ -70,7 +70,7 @@ class RoupaPage extends StatelessWidget {
                     style: TextButton.styleFrom(foregroundColor: Colors.white),
                     onPressed: () async {
                       await Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => PedidoPage(
+                        builder: (context) => PedidoRoupaPage(
                           telefone: telefone, // The page you want
                         ),
                       ));

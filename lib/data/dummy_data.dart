@@ -17,6 +17,7 @@ import 'package:suncoast/models/lojaderoupas.dart';
 import 'package:suncoast/models/materialdeconstrucao.dart';
 import 'package:suncoast/models/padaria.dart';
 import 'package:suncoast/models/pedido.dart';
+import 'package:suncoast/models/pedidoroupa.dart';
 import 'package:suncoast/models/pizzaria.dart';
 import 'package:suncoast/models/prato.dart';
 import 'package:suncoast/models/quiosque.dart';
@@ -924,6 +925,64 @@ const DUMMY_PEDIDO = const [
     quantidade: '1',
   ),
   Pedido(
+    id: '6',
+    local: 'mesa01',
+    itens: ['1', '2', '3'],
+    horaPedido: '12:00',
+    horaEntrega: '12:25',
+    telefone: '83991377693',
+    quantidade: '1',
+  ),
+];
+
+// ignore: non_constant_identifier_names
+const DUMMY_PEDIDOROUPA = const [
+  PedidoRoupa(
+    id: '1',
+    local: 'mesa01',
+    itens: ['1', '2', '3'],
+    horaPedido: '12:00',
+    horaEntrega: '12:25',
+    telefone: '11982551256',
+    quantidade: '1',
+  ),
+  PedidoRoupa(
+    id: '2',
+    local: 'mesa01',
+    itens: ['1', '2', '3'],
+    horaPedido: '12:00',
+    horaEntrega: '12:25',
+    telefone: '11982551256',
+    quantidade: '1',
+  ),
+  PedidoRoupa(
+    id: '3',
+    local: 'mesa01',
+    itens: ['1', '2', '3'],
+    horaPedido: '12:00',
+    horaEntrega: '12:25',
+    telefone: '83991377693',
+    quantidade: '1',
+  ),
+  PedidoRoupa(
+    id: '4',
+    local: 'mesa01',
+    itens: ['1', '2', '3'],
+    horaPedido: '12:00',
+    horaEntrega: '12:25',
+    telefone: '83991377693',
+    quantidade: '1',
+  ),
+  PedidoRoupa(
+    id: '5',
+    local: 'mesa01',
+    itens: ['1', '2', '3'],
+    horaPedido: '12:00',
+    horaEntrega: '12:25',
+    telefone: '83991377693',
+    quantidade: '1',
+  ),
+  PedidoRoupa(
     id: '6',
     local: 'mesa01',
     itens: ['1', '2', '3'],
