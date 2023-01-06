@@ -1,7 +1,8 @@
+// ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
 
-class Pedido {
+class PedidoPrato {
   final String id;
   final String local;
   final String horaPedido;
@@ -18,7 +19,7 @@ class Pedido {
   final List ingredientes;
   final String modoPreparo;
 
-  const Pedido({
+  const PedidoPrato({
     required this.id,
     required this.local,
     required this.horaPedido,

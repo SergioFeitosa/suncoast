@@ -73,18 +73,39 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
-    - assets/images/estados/
-    - assets/images/cidades/    
-    - assets/images/praias/
+    - assets/images/aluguelderoupas/
+    - assets/images/alugueldeveiculos/
+    - assets/images/artesanato/
+    - assets/images/bar/
+    - assets/images/bebidas/refrigerantes/
+    - assets/images/bebidas/cervejas/
     - assets/images/cartaoCredito/
+    - assets/images/cidades/    
+    - assets/images/estados/
+    - assets/images/farmacia/
+    - assets/images/feirinha/
+    - assets/images/hamburgueria/
+    - assets/images/lojaderoupas/
+    - assets/images/materialdeconstrucao/
+    - assets/images/padaria/
+    - assets/images/pizzaria/
+    - assets/images/praias/
     - assets/images/pratos/carnes/
     - assets/images/pratos/frutos_do_mar/
+    - assets/images/pratos/peixes/
     - assets/images/pratos/porcoes/
     - assets/images/pratos/pratos_regionais/
     - assets/images/pratos/pratos_executivos/
-    - assets/images/pratos/peixes/
-    - assets/images/bebidas/refrigerantes/
-    - assets/images/bebidas/cervejas/
+    - assets/images/roupa/social/
+    - assets/images/roupa/rigor/
+    - assets/images/roupa/esporte/
+    - assets/images/roupa/praia/
+    - assets/images/roupa/infantil/
+    - assets/images/quiosque/
+    - assets/images/restaurante/
+    - assets/images/salaodebeleza/
+    - assets/images/shopping/
+    - assets/images/supermercado/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:suncoast/pages/aluguelderoupa_page.dart';
 import 'package:suncoast/pages/estado_page.dart';
 import 'package:suncoast/pages/cidade_page.dart';
 import 'package:suncoast/pages/pedido_page.dart';
+import 'package:suncoast/pages/praia_aluguelderoupa_page.dart';
 import 'package:suncoast/pages/praia_bar_page.dart';
 import 'package:suncoast/pages/praia_page.dart';
 import 'package:suncoast/pages/bar_page.dart';
@@ -37,6 +39,7 @@ class SunCoastApp extends StatelessWidget {
             ),
       ),
       routes: {
+        AppRoutes.ALUGUELDEROUPA: (context) => const AlugueldeRoupaPage(),
         AppRoutes.BAR: (context) => const BarPage(),
         AppRoutes.CATEGORIA: (context) => const CategoriaPage(),
         AppRoutes.CIDADE: (context) => const CidadePage(),
@@ -48,6 +51,8 @@ class SunCoastApp extends StatelessWidget {
         AppRoutes.PEDIDO: (context) => const PedidoPage(),
         //AppRoutes.POUSADA: (context) => const PousadaPage(),
         AppRoutes.PRAIA: (context) => const PraiaPage(),
+        AppRoutes.PRAIAALUGUELDEROUPA: (context) =>
+            const PraiaAlugueldeRoupaPage(),
         AppRoutes.PRAIABAR: (context) => const PraiaBarPage(),
         AppRoutes.PRATO: (context) => const PratoPage(),
         //AppRoutes.QUIOSQUE: (context) => const QuiosquePage(),

@@ -6,6 +6,13 @@ import '../data/dummy_data.dart';
 class TipoEstabelecimentoPage extends StatelessWidget {
   const TipoEstabelecimentoPage({super.key});
 
+  void _selectPageAlugueldeRoupa(BuildContext context, Praia praia) {
+    Navigator.of(context).pushNamed(
+      AppRoutes.PRAIAALUGUELDEROUPA,
+      arguments: praia,
+    );
+  }
+
   void _selectPageBar(BuildContext context, Praia praia) {
     Navigator.of(context).pushNamed(
       AppRoutes.PRAIABAR,
@@ -25,8 +32,8 @@ class TipoEstabelecimentoPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '${praia.nome} -- Tipo de Estabelecimentos',
-          style: const TextStyle(fontSize: 10),
+          '${praia.nome} -- Tipos de Estabelecimento',
+          style: const TextStyle(fontSize: 14),
         ),
       ),
       body: Column(
@@ -35,17 +42,19 @@ class TipoEstabelecimentoPage extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             color: Colors.amber,
             child: const ListTile(
-              //leading: Text(
-              //  'Imagem',
-              //  style: TextStyle(fontSize: 16),
-              //),
               title: Text(
                 'Nome',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               trailing: Text(
-                'Id',
-                style: TextStyle(fontSize: 16),
+                'Qtd',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
@@ -53,14 +62,56 @@ class TipoEstabelecimentoPage extends StatelessWidget {
             child: ListView.separated(
               itemBuilder: (BuildContext context, int estabelecimento) {
                 return ListTile(
-                    onTap: () => _selectPageBar(context, praia),
+                    onTap: () => {
+                          if (tabela[estabelecimento].id == '1') ...[
+                            _selectPageAlugueldeRoupa(context, praia),
+                          ] else if (tabela[estabelecimento].id == '2') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '3') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '4') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '5') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '6') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '7') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '8') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '9') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '10') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '11') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '12') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '13') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '14') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '15') ...[
+                            _selectPageBar(context, praia),
+                          ] else if (tabela[estabelecimento].id == '16') ...[
+                            _selectPageBar(context, praia),
+                          ]
+                        },
                     //leading: Image.asset(
                     //  tabela[estabelecimento].title,
                     //  width: 50,
                     //),
-                    title: Text('  ${tabela[estabelecimento].title}'),
+                    title: Text(
+                      '  ${tabela[estabelecimento].title}',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        height: 2,
+                        fontSize: 13,
+                      ),
+                    ),
                     trailing: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           if (tabela[estabelecimento].id == '1') ...[
                             Text('  ${praia.aluguelderoupas.length}'),
@@ -97,7 +148,7 @@ class TipoEstabelecimentoPage extends StatelessWidget {
                           ]
                         ]));
               },
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(2),
               separatorBuilder: (_, __) => const Divider(),
               itemCount: tabela.length,
             ),

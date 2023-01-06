@@ -1,16 +1,18 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'package:suncoast/models/bar.dart';
+import 'package:suncoast/models/aluguelderoupas.dart';
 import 'package:suncoast/models/praia.dart';
 import 'package:suncoast/utils/app_routes.dart';
 import '../data/dummy_data.dart';
 
-class PraiaBarPage extends StatelessWidget {
-  const PraiaBarPage({super.key});
+class PraiaAlugueldeRoupaPage extends StatelessWidget {
+  const PraiaAlugueldeRoupaPage({super.key});
 
-  void _selectBar(BuildContext context, Bar bar) {
+  void _selectAlugueldeRoupas(BuildContext context, AlugueldeRoupas alugueldeRoupas) {
     Navigator.of(context).pushNamed(
-      AppRoutes.BAR,
-      arguments: bar,
+      AppRoutes.ALUGUELDEROUPA,
+      arguments: alugueldeRoupas,
     );
   }
 
@@ -18,13 +20,15 @@ class PraiaBarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final praia = ModalRoute.of(context)?.settings.arguments as Praia;
 
-    final tabela =
-        DUMMY_BAR.where((bar) => praia.bar.contains(bar.id)).toList();
+    final tabela = DUMMY_ALUGUELDEROUPAS
+        .where((alugueldeRoupas) =>
+            praia.aluguelderoupas.contains(alugueldeRoupas.id))
+        .toList();
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '${praia.nome} -- Bares',
+          '${praia.nome} -- Aluguel de Roupas',
           style: const TextStyle(fontSize: 16),
         ),
       ),
@@ -46,14 +50,14 @@ class PraiaBarPage extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
-              itemBuilder: (BuildContext context, int bar) {
+              itemBuilder: (BuildContext context, int alugueldeRoupas) {
                 return ListTile(
-                  onTap: () => _selectBar(context, tabela[bar]),
+                  onTap: () => _selectAlugueldeRoupas(context, tabela[alugueldeRoupas]),
                   leading: Image.asset(
-                    tabela[bar].imagem,
+                    tabela[alugueldeRoupas].imagem,
                     width: 50,
                   ),
-                  title: Text('  ${tabela[bar].nome}'),
+                  title: Text('  ${tabela[alugueldeRoupas].nome}'),
                 );
               },
               padding: const EdgeInsets.all(16),

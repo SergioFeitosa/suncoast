@@ -1,5 +1,5 @@
 // ignore: duplicate_ignore
-// ignore_for_file: constant_identifier_names, duplicate_ignore, prefer_const_constructors
+// ignore_for_file: constant_identifier_names, duplicate_ignore, prefer_const_constructors, unnecessary_const
 
 import 'package:flutter/material.dart';
 import 'package:suncoast/models/alugueldeveiculos.dart';
@@ -10,9 +10,21 @@ import 'package:suncoast/models/categoria.dart';
 import 'package:suncoast/models/estabelecimento.dart';
 import 'package:suncoast/models/estado.dart';
 import 'package:suncoast/models/cidade.dart';
+import 'package:suncoast/models/farmacia.dart';
+import 'package:suncoast/models/feirinha.dart';
+import 'package:suncoast/models/hamburgueria.dart';
+import 'package:suncoast/models/lojaderoupas.dart';
+import 'package:suncoast/models/materialdeconstrucao.dart';
+import 'package:suncoast/models/padaria.dart';
 import 'package:suncoast/models/pedido.dart';
+import 'package:suncoast/models/pizzaria.dart';
 import 'package:suncoast/models/prato.dart';
+import 'package:suncoast/models/quiosque.dart';
 import 'package:suncoast/models/restaurante.dart';
+import 'package:suncoast/models/roupa.dart';
+import 'package:suncoast/models/salaodebeleza.dart';
+import 'package:suncoast/models/shopping.dart';
+import 'package:suncoast/models/supermercado.dart';
 
 import '../models/aluguelderoupas.dart';
 import '../models/praia.dart';
@@ -375,11 +387,11 @@ const DUMMY_PRAIAS = [
       imagem: 'assets/images/praias/praia-cabo-branco.jpg',
       nome: 'Cabo Branco',
       temperatura: 27,
-      tipoEstabelecimentos: ['1'],
-      aluguelderoupas: ['1'],
-      alugueldeveiculos: [],
+      tipoEstabelecimentos: ['1', '4'],
+      aluguelderoupas: ['1', '2'],
+      alugueldeveiculos: ['1'],
       artesanato: [],
-      bar: [],
+      bar: ['1', '2', '3', '4'],
       farmacia: [],
       feirinha: [],
       hamburgueria: [],
@@ -551,7 +563,7 @@ const DUMMY_PRAIAS = [
       imagem: 'assets/images/cidades/rio-tinto.jpg',
       nome: 'Rio Tinto',
       temperatura: 27,
-      tipoEstabelecimentos: ['1'],
+      tipoEstabelecimentos: ['1', '2'],
       aluguelderoupas: [],
       alugueldeveiculos: [],
       artesanato: [],
@@ -660,28 +672,50 @@ const DUMMY_CATEGORIA = const [
     id: '1',
     title: 'Pratos    Regionais',
     color: Colors.purple,
+    tipo: '1',
   ),
   Categoria(
     id: '2',
     title: 'Pratos Tradicionais',
     color: Colors.red,
+    tipo: '1',
   ),
   Categoria(
     id: '3',
     title: 'Porções',
     color: Colors.orange,
+    tipo: '1',
   ),
   Categoria(
     id: '4',
     title: 'Bebidas',
     color: Colors.cyan,
+    tipo: '2',
   ),
   Categoria(
     id: '5',
-    title: 'Drinks',
+    title: 'Social',
     color: Colors.grey,
+    tipo: '3',
+  ),
+  Categoria(
+    id: '6',
+    title: 'Rigor',
+    color: Colors.grey,
+    tipo: '3',
+  ),
+  Categoria(
+    id: '7',
+    title: 'Esporte',
+    color: Colors.grey,
+    tipo: '3',
   ),
 ];
+/*
+Tipo 1 = Pratos
+Tipo 2 = Bebidas
+Tipo 3 = Roupas
+*/
 
 // ignore: unnecessary_const, constant_identifier_names
 const DUMMY_PRATO = const [
@@ -761,43 +795,89 @@ const DUMMY_PRATO = const [
       modoPreparo: 'Misture tudo'),
 ];
 
-
-const DUMMY_BEBIDA = [
-  Bebida(
+const DUMMY_ROUPA = const [
+  Roupa(
       id: '1',
-      nome: 'Coca Cola',
-      imagem: 'assets/images/bebidas/refrigerantes/cocacola-lata350ml.jpg',
-      descricao:
-          'Refrigerante de Cola',
-      preco: 2.00,
-      ingredientes: ['Cola','Açúcar'],
-      categorias: ['1'],
-  ),
-  Bebida(
+      title: 'Calça Social',
+      color: Colors.purple,
+      imagem: 'assets/images/roupa/social/calca.jpg',
+      descricao: 'Calça Social',
+      preco: 25.00,
+      observacao: ''),
+  Roupa(
       id: '2',
-      nome: 'Guaraná',
-      imagem: 'assets/images/bebidas/refrigerantes/cocacola-lata350ml.jpg',
-      descricao:
-          'Refrigerante de Guaraná',
-      preco: 2.00,
-      ingredientes: ['Guaraná','Açúcar'],
-      categorias: ['1'],
+      title: 'Camisa social',
+      color: Colors.red,
+      imagem: 'assets/images/roupa/social/camisa.jpg',
+      descricao: 'Camisa social',
+      preco: 45.00,
+      observacao: ''),
+  Roupa(
+      id: '3',
+      title: 'Calça Esporte Fino',
+      color: Colors.orange,
+      imagem: 'assets/images/roupa/esporte/calca.jpg',
+      descricao: 'Calça Jeans',
+      preco: 85.00,
+      observacao: ''),
+  Roupa(
+      id: '4',
+      title: 'Camisa Esporte',
+      color: Colors.cyan,
+      imagem: 'assets/images/roupa/esporte/camisa.jpg',
+      descricao: 'Camisa Esporte',
+      preco: 35.00,
+      observacao: ''),
+  Roupa(
+      id: '5',
+      title: 'Smoking',
+      color: Colors.grey,
+      imagem: 'assets/images/roupa/rigor/smoking.jpg',
+      descricao: 'Smoking',
+      preco: 35.00,
+      observacao: ''),
+  Roupa(
+      id: '6',
+      title: 'Camisa a Rigor',
+      color: Colors.grey,
+      imagem: 'assets/images/roupa/rigor/camisa.jpg',
+      descricao: 'Terno',
+      preco: 35.00,
+      observacao: '')
+];
+
+const DUMMY_BEBIDA = const [
+  Bebida(
+    id: '1',
+    nome: 'Coca Cola',
+    imagem: 'assets/images/bebidas/refrigerantes/cocacola-lata350ml.jpg',
+    descricao: 'Refrigerante de Cola',
+    preco: 2.00,
+    ingredientes: ['Cola', 'Açúcar'],
+    categorias: ['1'],
   ),
   Bebida(
-      id: '3',
-      nome: 'Cerveja',
-      imagem: 'assets/images/bebidas/refrigerantes/cocacola-lata350ml.jpg',
-      descricao:
-          'Cerveja',
-      preco: 2.00,
-      ingredientes: ['Malte','Açúcar'],
-      categorias: ['1'],
+    id: '2',
+    nome: 'Guaraná',
+    imagem: 'assets/images/bebidas/refrigerantes/cocacola-lata350ml.jpg',
+    descricao: 'Refrigerante de Guaraná',
+    preco: 2.00,
+    ingredientes: ['Guaraná', 'Açúcar'],
+    categorias: ['1'],
   ),
-
+  Bebida(
+    id: '3',
+    nome: 'Cerveja',
+    imagem: 'assets/images/bebidas/refrigerantes/cocacola-lata350ml.jpg',
+    descricao: 'Cerveja',
+    preco: 2.00,
+    ingredientes: ['Malte', 'Açúcar'],
+    categorias: ['1'],
+  ),
 ];
 
 // ignore: non_constant_identifier_names
-const DUMMY_PEDIDO = [
+const DUMMY_PEDIDO = const [
   Pedido(
     id: '1',
     local: 'mesa01',
@@ -854,32 +934,50 @@ const DUMMY_PEDIDO = [
   ),
 ];
 
-
-
-const DUMMY_ALUGUELDEROUPAS = [
+const DUMMY_ALUGUELDEROUPAS = const [
   AlugueldeRoupas(
-      id: '1',
-      imagem: 'assets/images/aluguelderoupas/aluguelderoupas.jpg',
-      nome: 'Aluguel de Roupas Dona Maria',
-      categorias: ['1']),
+    id: '1',
+    imagem: 'assets/images/aluguelderoupas/aluguelderoupas.jpg',
+    nome: 'Aluguel de Roupas Dona Maria',
+    pedidos: ['1', '2'],
+    categorias: ['5', '6'],
+    social: ['1'],
+    rigor: ['5'],
+    esporte: [],
+  ),
   AlugueldeRoupas(
-      id: '2',
-      imagem: 'assets/images/aluguelderoupas/aluguelderoupas.jpg',
-      nome: 'Aluguel de Roupas Dona Neusa',
-      categorias: ['2']),
+    id: '2',
+    imagem: 'assets/images/aluguelderoupas/aluguelderoupas.jpg',
+    nome: 'Aluguel de Roupas Dona Neusa',
+    pedidos: ['1', '2'],
+    categorias: ['5', '6'],
+    social: ['1'],
+    rigor: ['5'],
+    esporte: [],
+  ),
   AlugueldeRoupas(
-      id: '3',
-      imagem: 'assets/images/aluguelderoupas/aluguelderoupas.jpg',
-      nome: 'Aluguel de Roupas Dona Ondina',
-      categorias: ['3']),
+    id: '3',
+    imagem: 'assets/images/aluguelderoupas/aluguelderoupas.jpg',
+    nome: 'Aluguel de Roupas Dona Ondina',
+    pedidos: ['1', '2'],
+    categorias: ['5', '6'],
+    social: ['1'],
+    rigor: ['5'],
+    esporte: [],
+  ),
   AlugueldeRoupas(
-      id: '4',
-      imagem: 'assets/images/aluguelderoupas/aluguelderoupas.jpg',
-      nome: 'Aluguel de Roupas Dona Olivia',
-      categorias: ['4']),
+    id: '4',
+    imagem: 'assets/images/aluguelderoupas/aluguelderoupas.jpg',
+    nome: 'Aluguel de Roupas Dona Olivia',
+    pedidos: ['1', '2'],
+    categorias: ['5', '6'],
+    social: ['1'],
+    rigor: ['5'],
+    esporte: [],
+  ),
 ];
 
-const DUMMY_ALUGUELDEVEICULOS = [
+const DUMMY_ALUGUELDEVEICULOS = const [
   AlugueldeVeiculos(
       id: '1',
       imagem: 'assets/images/aluguelderoupas/alugueldeveiculos.jpg',
@@ -902,7 +1000,7 @@ const DUMMY_ALUGUELDEVEICULOS = [
       categorias: ['4']),
 ];
 
-const DUMMY_ARTESANATO = [
+const DUMMY_ARTESANATO = const [
   Artesanato(
       id: '1',
       imagem: 'assets/images/artesanato/artesanato.jpg',
@@ -925,10 +1023,10 @@ const DUMMY_ARTESANATO = [
       categorias: ['4']),
 ];
 
-const DUMMY_BAR = [
+const DUMMY_BAR = const [
   Bar(
       id: '1',
-      imagem: 'assets/images/praias/praia-bessa.jpg',
+      imagem: 'assets/images/bar/bar.jpg',
       nome: 'Bar do Zé',
       pedidos: ['1', '2'],
       categorias: ['1', '2'],
@@ -937,7 +1035,7 @@ const DUMMY_BAR = [
       porcoes: ['1', '2', '3']),
   Bar(
       id: '2',
-      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
+      imagem: 'assets/images/bar/bar.jpg',
       nome: 'Bar Bantinho',
       categorias: ['2'],
       pedidos: ['1', '2'],
@@ -946,7 +1044,7 @@ const DUMMY_BAR = [
       porcoes: []),
   Bar(
       id: '3',
-      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
+      imagem: 'assets/images/bar/bar.jpg',
       nome: 'Bar racuda',
       categorias: ['3'],
       pedidos: ['1', '2'],
@@ -955,7 +1053,7 @@ const DUMMY_BAR = [
       porcoes: ['1', '2', '3']),
   Bar(
       id: '4',
-      imagem: 'assets/images/praias/praia-cabo-branco.jpg',
+      imagem: 'assets/images/bar/bar.jpg',
       nome: 'Bar toré',
       categorias: ['1'],
       pedidos: ['1', '2'],
@@ -964,7 +1062,191 @@ const DUMMY_BAR = [
       porcoes: ['2']),
 ];
 
-const DUMMY_RESTAURANTE = [
+const DUMMY_FARMACIA = const [
+  Farmacia(
+      id: '1',
+      imagem: 'assets/images/farmacia/farmacia.jpg',
+      nome: 'Farmacia01',
+      categorias: ['1']),
+  Farmacia(
+      id: '2',
+      imagem: 'assets/images/farmacia/farmacia.jpg',
+      nome: 'Farmacia02',
+      categorias: ['2']),
+  Farmacia(
+      id: '3',
+      imagem: 'assets/images/farmacia/farmacia.jpg',
+      nome: 'Farmacia03',
+      categorias: ['3']),
+  Farmacia(
+      id: '4',
+      imagem: 'assets/images/farmacia/farmacia.jpg',
+      nome: 'Farmacia04',
+      categorias: ['4']),
+];
+
+const DUMMY_FEIRINHA = const [
+  Feirinha(
+      id: '1',
+      imagem: 'assets/images/feirinha/feirinha.jpg',
+      nome: 'Feirinha01',
+      categorias: ['1']),
+  Feirinha(
+      id: '2',
+      imagem: 'assets/images/feirinha/feirinha.jpg',
+      nome: 'Feirinha02',
+      categorias: ['2']),
+  Feirinha(
+      id: '3',
+      imagem: 'assets/images/feirinha/feirinha.jpg',
+      nome: 'Feirinha03',
+      categorias: ['3']),
+  Feirinha(
+      id: '4',
+      imagem: 'assets/images/feirinha/feirinha.jpg',
+      nome: 'Feirinha04',
+      categorias: ['4']),
+];
+
+const DUMMY_HAMBURGUERIA = const [
+  Hamburgueria(
+      id: '1',
+      imagem: 'assets/images/hamburgueria/hamburgueria.jpg',
+      nome: 'Hamburgueria01',
+      categorias: ['1']),
+  Hamburgueria(
+      id: '2',
+      imagem: 'assets/images/hamburgueria/hamburgueria.jpg',
+      nome: 'Hamburgueria02',
+      categorias: ['2']),
+  Hamburgueria(
+      id: '3',
+      imagem: 'assets/images/hamburgueria/hamburgueria.jpg',
+      nome: 'Hamburgueria03',
+      categorias: ['3']),
+  Hamburgueria(
+      id: '4',
+      imagem: 'assets/images/hamburgueria/hamburgueria.jpg',
+      nome: 'Hamburgueria04',
+      categorias: ['4']),
+];
+
+const LOJADEROUPAS = const [
+  LojadeRoupas(
+      id: '1',
+      imagem: 'assets/images/lojaderoupas/lojaderoupas.jpg',
+      nome: 'Loja de Roupas 01',
+      categorias: ['1']),
+  LojadeRoupas(
+      id: '2',
+      imagem: 'assets/images/lojaderoupas/lojaderoupas.jpg',
+      nome: 'Loja de Roupas 02',
+      categorias: ['2']),
+  LojadeRoupas(
+      id: '3',
+      imagem: 'assets/images/lojaderoupas/lojaderoupas.jpg',
+      nome: 'Loja de Roupas 03',
+      categorias: ['3']),
+  LojadeRoupas(
+      id: '4',
+      imagem: 'assets/images/lojaderoupas/lojaderoupas.jpg',
+      nome: 'Loja de Roupas 04',
+      categorias: ['4']),
+];
+
+const MATERIALDECONSTRUCAO = const [
+  MaterialdeConstrucao(
+      id: '1',
+      imagem: 'assets/images/materialdeconstrucao/materialdeconstrucao.jpg',
+      nome: 'Material de Construção 01',
+      categorias: ['1']),
+  MaterialdeConstrucao(
+      id: '2',
+      imagem: 'assets/images/materialdeconstrucao/materialdeconstrucao.jpg',
+      nome: 'Material de Construção 02',
+      categorias: ['2']),
+  MaterialdeConstrucao(
+      id: '3',
+      imagem: 'assets/images/materialdeconstrucao/materialdeconstrucao.jpg',
+      nome: 'Material de Construção 03',
+      categorias: ['3']),
+  MaterialdeConstrucao(
+      id: '4',
+      imagem: 'assets/images/materialdeconstrucao/materialdeconstrucao.jpg',
+      nome: 'Material de Construção 04',
+      categorias: ['4']),
+];
+
+const PADARIA = const [
+  Padaria(
+      id: '1',
+      imagem: 'assets/images/padaria/padaria.jpg',
+      nome: 'Padaria 01',
+      categorias: ['1']),
+  Padaria(
+      id: '2',
+      imagem: 'assets/images/padaria/padaria.jpg',
+      nome: 'Padaria 02',
+      categorias: ['2']),
+  Padaria(
+      id: '3',
+      imagem: 'assets/images/padaria/padaria.jpg',
+      nome: 'Padaria 03',
+      categorias: ['3']),
+  Padaria(
+      id: '4',
+      imagem: 'assets/images/padaria/padaria.jpg',
+      nome: 'Padaria 04',
+      categorias: ['4']),
+];
+
+const PIZZARIA = const [
+  Pizzaria(
+      id: '1',
+      imagem: 'assets/images/pizzaria/pizzaria.jpg',
+      nome: 'Pizzaria 01',
+      categorias: ['1']),
+  Pizzaria(
+      id: '2',
+      imagem: 'assets/images/pizzaria/pizzaria.jpg',
+      nome: 'Pizzaria 02',
+      categorias: ['2']),
+  Pizzaria(
+      id: '3',
+      imagem: 'assets/images/pizzaria/pizzaria.jpg',
+      nome: 'Pizzaria 03',
+      categorias: ['3']),
+  Pizzaria(
+      id: '4',
+      imagem: 'assets/images/pizzaria/pizzaria.jpg',
+      nome: 'Pizzaria 04',
+      categorias: ['4']),
+];
+
+const QUIOSQUE = const [
+  Quiosque(
+      id: '1',
+      imagem: 'assets/images/quiosque/quiosque.jpg',
+      nome: 'Quiosque 01',
+      categorias: ['1']),
+  Quiosque(
+      id: '2',
+      imagem: 'assets/images/quiosque/quiosque.jpg',
+      nome: 'Quiosque 02',
+      categorias: ['2']),
+  Quiosque(
+      id: '3',
+      imagem: 'assets/images/quiosque/quiosque.jpg',
+      nome: 'Quiosque 03',
+      categorias: ['3']),
+  Quiosque(
+      id: '4',
+      imagem: 'assets/images/quiosque/quiosque.jpg',
+      nome: 'Quiosque 04',
+      categorias: ['4']),
+];
+
+const DUMMY_RESTAURANTE = const [
   Restaurante(
       id: '1',
       imagem: 'assets/images/praias/praia-bessa.jpg',
@@ -984,6 +1266,75 @@ const DUMMY_RESTAURANTE = [
       id: '4',
       imagem: 'assets/images/praias/praia-cabo-branco.jpg',
       nome: 'RESTAURANTE toré',
+      categorias: ['4']),
+];
+
+const SALAODEBELEZA = const [
+  SalaodeBeleza(
+      id: '1',
+      imagem: 'assets/images/salaodebeleza/salaodebeleza.jpg',
+      nome: 'Salão de Beleza 01',
+      categorias: ['1']),
+  SalaodeBeleza(
+      id: '2',
+      imagem: 'assets/images/salaodebeleza/salaodebeleza.jpg',
+      nome: 'Salão de Beleza 02',
+      categorias: ['2']),
+  SalaodeBeleza(
+      id: '3',
+      imagem: 'assets/images/salaodebeleza/salaodebeleza.jpg',
+      nome: 'Salão de Beleza 03',
+      categorias: ['3']),
+  SalaodeBeleza(
+      id: '4',
+      imagem: 'assets/images/salaodebeleza/salaodebeleza.jpg',
+      nome: 'Salão de Beleza 04',
+      categorias: ['4']),
+];
+
+const SHOPPING = const [
+  Shopping(
+      id: '1',
+      imagem: 'assets/images/shopping/shopping.jpg',
+      nome: 'Shopping 01',
+      categorias: ['1']),
+  Shopping(
+      id: '2',
+      imagem: 'assets/images/shopping/shopping.jpg',
+      nome: 'Shopping 02',
+      categorias: ['2']),
+  Shopping(
+      id: '3',
+      imagem: 'assets/images/shopping/shopping.jpg',
+      nome: 'Shopping 03',
+      categorias: ['3']),
+  Shopping(
+      id: '4',
+      imagem: 'assets/images/shopping/shopping.jpg',
+      nome: 'Shopping 04',
+      categorias: ['4']),
+];
+
+const SUPERMERCADO = const [
+  Supermercado(
+      id: '1',
+      imagem: 'assets/images/supermercado/supermercado.jpg',
+      nome: 'Quiosque 01',
+      categorias: ['1']),
+  Supermercado(
+      id: '2',
+      imagem: 'assets/images/supermercado/supermercado.jpg',
+      nome: 'Quiosque 02',
+      categorias: ['2']),
+  Supermercado(
+      id: '3',
+      imagem: 'assets/images/supermercado/supermercado.jpg',
+      nome: 'Quiosque 03',
+      categorias: ['3']),
+  Supermercado(
+      id: '4',
+      imagem: 'assets/images/supermercado/supermercado.jpg',
+      nome: 'Quiosque 04',
       categorias: ['4']),
 ];
 
@@ -1027,4 +1378,26 @@ const List<String> DUMMY_IMAGES_PEIXES = [
 const List<String> DUMMY_IMAGES_BEBIDAS = [
   "assets/images/bebidas/refrigerantes/cocacola-lata350ml.jpg",
   "assets/images/bebidas/cervejas/cerveja.jpg",
+];
+
+const List<String> DUMMY_IMAGES_ROUPAS_SOCIAL = [
+  'assets/images/roupa/social/calca.jpg',
+  'assets/images/roupa/social/camisa.jpg',
+];
+
+const List<String> DUMMY_IMAGES_ROUPAS_RIGOR = [
+  'assets/images/roupa/rigor/calca.jpg',
+  'assets/images/roupa/rigor/camisa.jpg',
+  'assets/images/roupa/rigor/smoking.jpg',
+];
+const List<String> DUMMY_IMAGES_ROUPAS_ESPORTE = [
+  'assets/images/roupa/esporte/calca.jpg',
+  'assets/images/roupa/esporte/camisa.jpg',
+];
+const List<String> DUMMY_IMAGES_ROUPAS_PRAIA = [
+  'assets/images/roupa/praia/sunga.jpg',
+  'assets/images/roupa/praia/vestido.jpg',
+];
+const List<String> DUMMY_IMAGES_ROUPAS_INFANTIL = [
+  'assets/images/roupa/infantil/conjunto.jpg',
 ];

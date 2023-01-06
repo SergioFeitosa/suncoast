@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:suncoast/models/praia.dart';
-import 'package:suncoast/models/tipo_estabelecimento.dart';
+import 'package:suncoast/models/tipoestabelecimento.dart';
 import 'package:suncoast/utils/app_routes.dart';
 import '../data/dummy_data.dart';
 

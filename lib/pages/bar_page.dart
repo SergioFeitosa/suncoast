@@ -16,7 +16,7 @@ class BarPage extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Categorias xsss',
+            'Bar -- Categorias',
             style: TextStyle(fontSize: 16),
           ),
         ),
