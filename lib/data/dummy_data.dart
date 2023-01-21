@@ -815,10 +815,10 @@ const DUMMY_ROUPA = const [
       observacao: ''),
   Roupa(
       id: '3',
-      title: 'Calça Esporte Fino',
+      title: 'Calça Social ',
       color: Colors.orange,
       imagem: 'assets/images/roupa/esporte/calca.jpg',
-      descricao: 'Calça Jeans',
+      descricao: 'Outra Calça',
       preco: 85.00,
       observacao: ''),
   Roupa(
@@ -1439,15 +1439,46 @@ const List<String> DUMMY_IMAGES_BEBIDAS = [
   "assets/images/bebidas/cervejas/cerveja.jpg",
 ];
 
-const List<String> DUMMY_IMAGES_ROUPAS_SOCIAL = [
-  'assets/images/roupa/social/calca.jpg',
-  'assets/images/roupa/social/camisa.jpg',
+const List<Map> DUMMY_IMAGES_ROUPAS_SOCIAL = [
+  {
+    "name": "Calça Social",
+    "image": 'assets/images/roupa/social/calca.jpg',
+    "routeName": "1"
+  },
+  {
+    "name": "Camisa Social",
+    "image": 'assets/images/roupa/social/camisa.jpg',
+    "routeName": "2"
+  },
+  {
+    "name": "Outra Calça Social",
+    "image": 'assets/images/roupa/social/calcaprod001.jpg',
+    "routeName": "3"
+  },
 ];
 
-const List<String> DUMMY_IMAGES_ROUPAS_RIGOR = [
-  'assets/images/roupa/rigor/calca.jpg',
-  'assets/images/roupa/rigor/camisa.jpg',
-  'assets/images/roupa/rigor/smoking.jpg',
+const List<String> DUMMY_IMAGES_ROUPAS_SOCIALs = [
+  'assets/images/roupa/social/calca.jpg',
+  'assets/images/roupa/social/camisa.jpg',
+  'assets/images/roupa/social/calcaprod001.jpg',
+];
+
+const List<Map> DUMMY_IMAGES_ROUPAS_RIGOR = [
+  {
+    "name": "Calça a Rigor",
+    "image": 'assets/images/roupa/rigor/calca.jpg',
+    "routeName": "1"
+  },
+  {
+    "name": "Camisa Social",
+    "image": 'assets/images/roupa/rigor/camisa.jpg',
+    "routeName": "2"
+  },
+  {
+    "name": "Outra Calça Social",
+    "image": 'assets/images/roupa/rigor/smoking.jpg',
+    "routeName": "3"
+  },
 ];
 const List<String> DUMMY_IMAGES_ROUPAS_ESPORTE = [
   'assets/images/roupa/esporte/calca.jpg',

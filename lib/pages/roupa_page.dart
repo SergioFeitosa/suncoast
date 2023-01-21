@@ -12,9 +12,9 @@ class RoupaPage extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final aluguelderoupas;
   // ignore: prefer_typing_uninitialized_variables
-  final roupaEscolhida;
+  final String routeName;
 
-  const RoupaPage({super.key, this.aluguelderoupas, this.roupaEscolhida});
+  const RoupaPage({super.key, this.aluguelderoupas, required this.routeName});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class RoupaPage extends StatelessWidget {
 
     List<Roupa> tabela = DUMMY_ROUPA
         // ignore: unrelated_type_equality_checks
-        .where((roupa) => (roupa.id.contains((roupaEscolhida + 1).toString())))
+        .where((roupa) => (roupa.id.contains((routeName).toString())))
         .toList();
 
     return Scaffold(
