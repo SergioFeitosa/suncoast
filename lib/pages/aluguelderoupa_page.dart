@@ -26,7 +26,7 @@ class AlugueldeRoupaPage extends StatelessWidget {
                         alignment: Alignment.center,
                         children: <Widget>[
                           Image.asset(item["image"],
-                              fit: BoxFit.cover, width: 700.0),
+                              fit: BoxFit.cover, width: 400.0),
                           Positioned(
                             bottom: 0.0,
                             // left: 0.0,
@@ -72,6 +72,66 @@ class AlugueldeRoupaPage extends StatelessWidget {
         )
         .toList();
 
+    final List<Widget> imageSliders2 = DUMMY_IMAGES_ROUPAS_RIGOR
+        .map(
+          // ignore: avoid_unnecessary_containers
+          (item) => Container(
+            child: GestureDetector(
+                child: Container(
+                  margin: const EdgeInsets.all(5.0),
+                  child: ClipRRect(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(5.0)),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: <Widget>[
+                          Image.asset(item["image"],
+                              fit: BoxFit.cover, width: 400.0),
+                          Positioned(
+                            bottom: 0.0,
+                            // left: 0.0,
+                            // right: 0.0,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Color.fromARGB(0, 0, 0, 0),
+                                    Color.fromARGB(0, 0, 0, 0)
+                                  ],
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                ),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 20.0, horizontal: 10.0),
+                              child: Text(
+                                '${item["name"]}',
+                                // '${nameList[imgList.indexOf(item)]}',
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )),
+                ),
+                onTap: () => {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RoupaPage(
+                            aluguelderoupas: aluguelderoupa,
+                            routeName: '${item["routeName"]}',
+                          ),
+                        ),
+                      ),
+                    }),
+          ),
+        )
+        .toList();
+
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
@@ -82,24 +142,46 @@ class AlugueldeRoupaPage extends StatelessWidget {
             style: TextStyle(fontSize: 16),
           ),
         ),
-        body: Container(
-          // margin: EdgeInsets.symmetric(horizontal: 5),
-          alignment: Alignment.center,
-          child: CarouselSlider(
-            options: CarouselOptions(
-              height: 400,
-              // aspectRatio: 2,
-              enlargeCenterPage: true,
-              enableInfiniteScroll: false,
-              viewportFraction: .5,
-              initialPage: 0,
-              autoPlay: true,
-              autoPlayInterval: const Duration(seconds: 4),
-              autoPlayCurve: Curves.fastOutSlowIn,
-              enlargeStrategy: CenterPageEnlargeStrategy.scale,
+        body: Column(
+          children: [
+            Container(
+              // margin: EdgeInsets.symmetric(horizontal: 5),
+              alignment: Alignment.center,
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  height: 400,
+                  // aspectRatio: 2,
+                  enlargeCenterPage: true,
+                  enableInfiniteScroll: false,
+                  viewportFraction: .5,
+                  initialPage: 0,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 4),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                ),
+                items: imageSliders,
+              ),
             ),
-            items: imageSliders,
-          ),
+            const SizedBox(
+              height: 10,
+            ),
+            CarouselSlider(
+              options: CarouselOptions(
+                height: 400,
+                // aspectRatio: 2,
+                enlargeCenterPage: true,
+                enableInfiniteScroll: false,
+                viewportFraction: .5,
+                initialPage: 0,
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 4),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enlargeStrategy: CenterPageEnlargeStrategy.scale,
+              ),
+              items: imageSliders2,
+            ),
+          ],
         ),
       ),
     );

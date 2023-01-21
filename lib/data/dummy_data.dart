@@ -815,7 +815,7 @@ const DUMMY_ROUPA = const [
       observacao: ''),
   Roupa(
       id: '3',
-      title: 'Calça Social ',
+      title: 'Outra Calça Social ',
       color: Colors.orange,
       imagem: 'assets/images/roupa/esporte/calca.jpg',
       descricao: 'Outra Calça',
@@ -823,14 +823,22 @@ const DUMMY_ROUPA = const [
       observacao: ''),
   Roupa(
       id: '4',
-      title: 'Camisa Esporte',
+      title: 'Calça a Rigor',
       color: Colors.cyan,
-      imagem: 'assets/images/roupa/esporte/camisa.jpg',
-      descricao: 'Camisa Esporte',
+      imagem: 'assets/images/roupa/esporte/calca.jpg',
+      descricao: 'Calça a Rigor',
       preco: 35.00,
       observacao: ''),
   Roupa(
       id: '5',
+      title: 'Camisa a Rigor',
+      color: Colors.grey,
+      imagem: 'assets/images/roupa/rigor/camisa.jpg',
+      descricao: 'Camisa a Rigor',
+      preco: 35.00,
+      observacao: ''),
+  Roupa(
+      id: '6',
       title: 'Smoking',
       color: Colors.grey,
       imagem: 'assets/images/roupa/rigor/smoking.jpg',
@@ -838,7 +846,7 @@ const DUMMY_ROUPA = const [
       preco: 35.00,
       observacao: ''),
   Roupa(
-      id: '6',
+      id: '7',
       title: 'Camisa a Rigor',
       color: Colors.grey,
       imagem: 'assets/images/roupa/rigor/camisa.jpg',
@@ -1457,27 +1465,21 @@ const List<Map> DUMMY_IMAGES_ROUPAS_SOCIAL = [
   },
 ];
 
-const List<String> DUMMY_IMAGES_ROUPAS_SOCIALs = [
-  'assets/images/roupa/social/calca.jpg',
-  'assets/images/roupa/social/camisa.jpg',
-  'assets/images/roupa/social/calcaprod001.jpg',
-];
-
 const List<Map> DUMMY_IMAGES_ROUPAS_RIGOR = [
   {
     "name": "Calça a Rigor",
     "image": 'assets/images/roupa/rigor/calca.jpg',
-    "routeName": "1"
+    "routeName": "4"
   },
   {
-    "name": "Camisa Social",
+    "name": "Camisa a Rigor",
     "image": 'assets/images/roupa/rigor/camisa.jpg',
-    "routeName": "2"
+    "routeName": "5"
   },
   {
-    "name": "Outra Calça Social",
+    "name": "Smoking",
     "image": 'assets/images/roupa/rigor/smoking.jpg',
-    "routeName": "3"
+    "routeName": "6"
   },
 ];
 const List<String> DUMMY_IMAGES_ROUPAS_ESPORTE = [
