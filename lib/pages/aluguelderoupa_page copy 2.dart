@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers, unnecessary_new
+// ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -35,21 +35,19 @@ class AlugueldeRoupaPage extends StatelessWidget {
         child: CarouselSlider(
           options: CarouselOptions(height: 150, enableInfiniteScroll: false),
           items: robot
-              .map((item) => Container(
-                    child: GestureDetector(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => RoupaPage(
-                                  //aluguelderoupas: aluguelderoupa,
-                                  routeName: item["routeName"]))),
-                      child: Container(
-                          margin: const EdgeInsets.all(15),
-                          width: double.infinity,
-                          child: Image.asset(
-                            item["image"],
-                          )),
-                    ),
+              .map((item) => GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RoupaPage(
+                                //aluguelderoupas: aluguelderoupa,
+                                routeName: item["routeName"]))),
+                    child: Container(
+                        margin: const EdgeInsets.all(15),
+                        width: double.infinity,
+                        child: Image.asset(
+                          item["image"],
+                        )),
                   ))
               .toList(),
         ),
