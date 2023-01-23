@@ -12,9 +12,9 @@ class PratoPage extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final bar;
   // ignore: prefer_typing_uninitialized_variables
-  final pratoEscolhido;
+  final routeName;
 
-  const PratoPage({super.key, this.bar, this.pratoEscolhido});
+  const PratoPage({super.key, this.bar, this.routeName});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class PratoPage extends StatelessWidget {
 
     List<Prato> tabela = DUMMY_PRATO
         // ignore: unrelated_type_equality_checks
-        .where((prato) => (prato.id.contains((pratoEscolhido + 1).toString())))
+        .where((prato) => (prato.id.contains((routeName).toString())))
         .toList();
 
     return Scaffold(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:suncoast/data/dummy_data.dart';
 import 'package:suncoast/models/bar.dart';
-import 'package:suncoast/pages/roupa_page.dart';
+import 'package:suncoast/pages/prato_page.dart';
 
 class BarPage extends StatefulWidget {
   const BarPage({super.key});
@@ -16,7 +16,7 @@ class _BarPageState extends State<BarPage> {
 
   @override
   Widget build(BuildContext context) {
-    final aluguelderoupa = ModalRoute.of(context)?.settings.arguments as Bar?;
+    final bar = ModalRoute.of(context)?.settings.arguments as Bar?;
 
     final List<Widget> imageSliders = DUMMY_IMAGES_PRATOS_REGIONAISX
         .map(
@@ -38,7 +38,7 @@ class _BarPageState extends State<BarPage> {
                         style: const TextStyle(
                           color: Colors.black,
                           backgroundColor: Colors.white,
-                          fontSize: 20.0,
+                          fontSize: 12.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -48,8 +48,8 @@ class _BarPageState extends State<BarPage> {
                 onTap: () => {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => RoupaPage(
-                            aluguelderoupas: aluguelderoupa,
+                          builder: (context) => PratoPage(
+                            bar: bar,
                             routeName: '${item["routeName"]}',
                           ),
                         ),
@@ -78,7 +78,7 @@ class _BarPageState extends State<BarPage> {
                         // '${nameList[imgList.indexOf(item)]}',
                         style: const TextStyle(
                           color: Colors.black,
-                          fontSize: 20.0,
+                          fontSize: 12.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -88,8 +88,8 @@ class _BarPageState extends State<BarPage> {
                 onTap: () => {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => RoupaPage(
-                            aluguelderoupas: aluguelderoupa,
+                          builder: (context) => PratoPage(
+                            bar: bar,
                             routeName: '${item["routeName"]}',
                           ),
                         ),
@@ -157,7 +157,7 @@ class _BarPageState extends State<BarPage> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                   alignment: Alignment.center,
                   child: CarouselSlider(
                     options: CarouselOptions(
@@ -183,9 +183,6 @@ class _BarPageState extends State<BarPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: indicators(DUMMY_IMAGES_PORCOESX.length, _current),
-                ),
-                const SizedBox(
-                  height: 30,
                 ),
               ],
             ),

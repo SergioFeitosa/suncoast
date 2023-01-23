@@ -1412,7 +1412,7 @@ const List<Map> DUMMY_IMAGES_PRATOS_REGIONAISX = [
     "routeName": "1"
   },
   {
-    "name": "Carne de Sol",
+    "name": "Carne Sol com Macaxeira",
     "image":
         'assets/images/pratos/pratos_regionais/carnedesol-commacaxeira.jpg',
     "routeName": "2"
@@ -1423,15 +1423,15 @@ const List<Map> DUMMY_IMAGES_PRATOS_REGIONAISX = [
     "routeName": "3"
   },
   {
-    "name": "Peixe Cioba",
+    "name": "Rubacão",
     "image": 'assets/images/pratos/pratos_regionais/rubacao.jpg',
-    "routeName": "3"
+    "routeName": "4"
   },
   {
-    "name": "Peixe Cioba",
+    "name": "Carne de Sol com Queijo Coalho",
     "image":
         'assets/images/pratos/pratos_regionais/carnedesol-comqueijocoalho.jpg',
-    "routeName": "3"
+    "routeName": "5"
   },
 ];
 
