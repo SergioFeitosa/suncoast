@@ -1461,6 +1461,34 @@ const List<String> DUMMY_IMAGES_PORCOES = [
   "assets/images/pratos/porcoes/porcoes.jpg",
 ];
 
+const List<Map> DUMMY_IMAGES_PORCOESX = [
+  {
+    "name": "Porções 1",
+    "image": "assets/images/pratos/porcoes/porcoes.jpg",
+    "routeName": "4"
+  },
+  {
+    "name": "Porções Especiais 1",
+    "image": "assets/images/pratos/porcoes/porcoesespeciais.jpg",
+    "routeName": "5"
+  },
+  {
+    "name": "Porções 2",
+    "image": "assets/images/pratos/porcoes/porcoes.jpg",
+    "routeName": "6"
+  },
+  {
+    "name": "Porções Especiais 2",
+    "image": "assets/images/pratos/porcoes/porcoesespeciais.jpg",
+    "routeName": "7"
+  },
+  {
+    "name": "Porções 3",
+    "image": "assets/images/pratos/porcoes/porcoes.jpg",
+    "routeName": "8"
+  },
+];
+
 const List<String> DUMMY_IMAGES_PEIXES = [
   "assets/images/pratos/peixes/cioba-frito.jpg",
   "assets/images/pratos/peixes/pescadaamarela.jpg",
@@ -1480,17 +1508,17 @@ const List<String> DUMMY_IMAGES_BEBIDAS = [
 const List<Map> DUMMY_IMAGES_ROUPAS_SOCIAL = [
   {
     "name": "Calça Social",
-    "image": 'assets/images/pratos/peixes/cioba-frito.jpg',
+    "image": 'assets/images/roupa/social/calca.jpg',
     "routeName": "1"
   },
   {
     "name": "Camisa Social",
-    "image": 'assets/images/pratos/pratos_regionais/baiao-dois-1.jpg',
+    "image": 'assets/images/roupa/social/camisa.jpg',
     "routeName": "2"
   },
   {
     "name": "Outra Calça Social",
-    "image": 'assets/images/pratos/pratos_regionais/rubacao.jpg',
+    "image": 'assets/images/roupa/social/calcaprod001.jpg',
     "routeName": "3"
   },
 ];
@@ -1498,17 +1526,17 @@ const List<Map> DUMMY_IMAGES_ROUPAS_SOCIAL = [
 const List<Map> DUMMY_IMAGES_ROUPAS_RIGOR = [
   {
     "name": "Calça a Rigor",
-    "image": 'assets/images/pratos/porcoes/porcoes.jpg',
+    "image": 'assets/images/roupa/rigor/calca.jpg',
     "routeName": "4"
   },
   {
     "name": "Camisa a Rigor",
-    "image": 'assets/images/pratos/peixes/tilapia-aomolhodealcaparras.jpg',
+    "image": 'assets/images/roupa/rigor/camisa.jpg',
     "routeName": "5"
   },
   {
     "name": "Smoking",
-    "image": 'assets/images/pratos/peixes/tilapia-fileempanado.jpg',
+    "image": 'assets/images/roupa/rigor/smoking.jpg',
     "routeName": "6"
   },
 ];

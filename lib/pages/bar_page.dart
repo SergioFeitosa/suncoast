@@ -1,14 +1,103 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:suncoast/data/dummy_data.dart';
 import 'package:suncoast/models/bar.dart';
-import 'package:suncoast/pages/prato_page.dart';
+import 'package:suncoast/pages/roupa_page.dart';
 
-class BarPage extends StatelessWidget {
+class BarPage extends StatefulWidget {
   const BarPage({super.key});
 
   @override
+  State<BarPage> createState() => _BarPageState();
+}
+
+class _BarPageState extends State<BarPage> {
+  int _current = 0;
+
+  @override
   Widget build(BuildContext context) {
-    final bar = ModalRoute.of(context)?.settings.arguments as Bar?;
+    final aluguelderoupa = ModalRoute.of(context)?.settings.arguments as Bar?;
+
+    final List<Widget> imageSliders = DUMMY_IMAGES_PRATOS_REGIONAISX
+        .map(
+          // ignore: avoid_unnecessary_containers
+          (item) => SizedBox(
+            child: GestureDetector(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: <Widget>[
+                    Image.asset(item["image"],
+                        fit: BoxFit.cover, height: 150.0, width: 200.0),
+                    Positioned(
+                      bottom: 0.0,
+                      // left: 0.0,
+                      // right: 0.0,
+                      child: Text(
+                        '${item["name"]}',
+                        // '${nameList[imgList.indexOf(item)]}',
+                        style: const TextStyle(
+                          color: Colors.black,
+                          backgroundColor: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                onTap: () => {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RoupaPage(
+                            aluguelderoupas: aluguelderoupa,
+                            routeName: '${item["routeName"]}',
+                          ),
+                        ),
+                      ),
+                    }),
+          ),
+        )
+        .toList();
+
+    final List<Widget> imageSliders2 = DUMMY_IMAGES_PORCOESX
+        .map(
+          // ignore: avoid_unnecessary_containers
+          (item) => SizedBox(
+            child: GestureDetector(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: <Widget>[
+                    Image.asset(item["image"],
+                        fit: BoxFit.cover, height: 150.0, width: 200.0),
+                    Positioned(
+                      bottom: 0.0,
+                      // left: 0.0,
+                      // right: 0.0,
+                      child: Text(
+                        '${item["name"]}',
+                        // '${nameList[imgList.indexOf(item)]}',
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                onTap: () => {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RoupaPage(
+                            aluguelderoupas: aluguelderoupa,
+                            routeName: '${item["routeName"]}',
+                          ),
+                        ),
+                      ),
+                    }),
+          ),
+        )
+        .toList();
 
     return MaterialApp(
       title: 'Material App',
@@ -20,252 +109,87 @@ class BarPage extends StatelessWidget {
             style: TextStyle(fontSize: 16),
           ),
         ),
-        body: Carousel(bar: bar),
-      ),
-    );
-  }
-}
-
-class Carousel extends StatefulWidget {
-  final Bar? bar;
-
-  const Carousel({
-    Key? key,
-    this.bar,
-  }) : super(key: key);
-
-  @override
-  State<Carousel> createState() => _CarouselState();
-}
-
-class _CarouselState extends State<Carousel> {
-  late Bar bar;
-
-  late PageController _pageController;
-
-  late int pratoEscolhido;
-
-  int activePage = 0;
-  int activePage2 = 0;
-  int activePage3 = 0;
-  int activePage4 = 0;
-  int activePage5 = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController(viewportFraction: 0.8, initialPage: 0);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    //final bar = ModalRoute.of(context)?.settings.arguments as Bar?;
-
-    final List imageSliders =
-        DUMMY_IMAGES_PRATOS_REGIONAISX.map((item) => item["image"]).toList();
-
-    return Center(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
-                decoration: InputDecoration(hintText: "PRATOS REGIONAIS"),
-                style: TextStyle(fontSize: 25.0, height: 2.0),
-              ),
-            ),
-            GestureDetector(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: 200,
-                child: PageView.builder(
-                  itemCount: DUMMY_IMAGES_PRATOS_REGIONAISX.length,
-                  pageSnapping: true,
-                  controller: _pageController,
-                  onPageChanged: (page) {
-                    setState(() {
-                      activePage = page;
-                    });
-                  },
-                  itemBuilder: (context, pagePosition) {
-                    bool active = pagePosition == activePage;
-                    pratoEscolhido = activePage;
-                    return slider(imageSliders, pagePosition, active);
-                  },
+        body: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: TextField(
+                    decoration: InputDecoration(hintText: "PRATOS REGIONAIS"),
+                    style: TextStyle(fontSize: 25.0, height: 2.0),
+                  ),
                 ),
-              ),
-              onTap: () async {
-                await Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => PratoPage(
-                      bar: widget.bar,
-                      pratoEscolhido: int.tryParse(
-                          DUMMY_IMAGES_PRATOS_REGIONAISX
-                              .map((item) => item["routename"])
-                              .toString()),
-                    ), // The page you want
+                Container(
+                  margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                  alignment: Alignment.center,
+                  child: CarouselSlider(
+                    options: CarouselOptions(
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          _current = index;
+                        });
+                      },
+                      height: 200,
+                      // aspectRatio: 2,
+                      enlargeCenterPage: true,
+                      enableInfiniteScroll: true,
+                      viewportFraction: .6,
+                      initialPage: 0,
+                      autoPlay: false,
+                      autoPlayInterval: const Duration(seconds: 4),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                    ),
+                    items: imageSliders,
                   ),
-                );
-              },
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: indicators(
+                      DUMMY_IMAGES_PRATOS_REGIONAISX.length, _current),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: TextField(
+                    decoration: InputDecoration(hintText: "PORÇÕES"),
+                    style: TextStyle(fontSize: 25.0, height: 2.0),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  alignment: Alignment.center,
+                  child: CarouselSlider(
+                    options: CarouselOptions(
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          _current = index;
+                        });
+                      },
+                      height: 200,
+                      // aspectRatio: 2,
+                      enlargeCenterPage: true,
+                      enableInfiniteScroll: true,
+                      viewportFraction: .6,
+                      initialPage: 0,
+                      autoPlay: false,
+                      autoPlayInterval: const Duration(seconds: 4),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                    ),
+                    items: imageSliders2,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: indicators(DUMMY_IMAGES_PORCOESX.length, _current),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
             ),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: indicators(
-                    DUMMY_IMAGES_PRATOS_REGIONAISX.length, activePage)),
-            const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: TextField(
-                  decoration: InputDecoration(hintText: "PRATOS EXECUTIVOS"),
-                  style:
-                      TextStyle(fontSize: 25.0, height: 2.0, color: Colors.red),
-                )),
-            GestureDetector(
-                onTap: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const PratoPage(
-                          pratoEscolhido:
-                              'PRATOS Executivos'), // The page you want
-                    ),
-                  );
-                },
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 200,
-                  child: PageView.builder(
-                    itemCount: DUMMY_IMAGES_PRATOS_EXECUTIVOS.length,
-                    pageSnapping: true,
-                    controller: _pageController,
-                    onPageChanged: (page) {
-                      setState(() {
-                        activePage2 = page;
-                      });
-                    },
-                    itemBuilder: (context, pagePosition) {
-                      bool active = pagePosition == activePage2;
-                      return slider(
-                          DUMMY_IMAGES_PRATOS_EXECUTIVOS, pagePosition, active);
-                    },
-                  ),
-                )),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: indicators(
-                    DUMMY_IMAGES_PRATOS_EXECUTIVOS.length, activePage2)),
-            const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: TextField(
-                  decoration: InputDecoration(hintText: "PORÇÕES"),
-                  style:
-                      TextStyle(fontSize: 25.0, height: 2.0, color: Colors.red),
-                )),
-            GestureDetector(
-                onTap: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const PratoPage(
-                          pratoEscolhido: 'Porções'), // The page you want
-                    ),
-                  );
-                },
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 200,
-                  child: PageView.builder(
-                    itemCount: DUMMY_IMAGES_PORCOES.length,
-                    pageSnapping: true,
-                    controller: _pageController,
-                    onPageChanged: (page) {
-                      setState(() {
-                        activePage3 = page;
-                      });
-                    },
-                    itemBuilder: (context, pagePosition) {
-                      bool active = pagePosition == activePage3;
-                      return slider(DUMMY_IMAGES_PORCOES, pagePosition, active);
-                    },
-                  ),
-                )),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: indicators(DUMMY_IMAGES_PORCOES.length, activePage3)),
-            const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: TextField(
-                  decoration: InputDecoration(hintText: "PEIXES"),
-                  style:
-                      TextStyle(fontSize: 25.0, height: 2.0, color: Colors.red),
-                )),
-            GestureDetector(
-                onTap: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const PratoPage(
-                          pratoEscolhido: 'Peixes'), // The page you want
-                    ),
-                  );
-                },
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 200,
-                  child: PageView.builder(
-                    itemCount: DUMMY_IMAGES_PEIXES.length,
-                    pageSnapping: true,
-                    controller: _pageController,
-                    onPageChanged: (page) {
-                      setState(() {
-                        activePage4 = page;
-                      });
-                    },
-                    itemBuilder: (context, pagePosition) {
-                      bool active = pagePosition == activePage4;
-                      return slider(DUMMY_IMAGES_PEIXES, pagePosition, active);
-                    },
-                  ),
-                )),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: indicators(DUMMY_IMAGES_PEIXES.length, activePage4)),
-            const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: TextField(
-                  decoration: InputDecoration(hintText: "BEBIDAS"),
-                  style:
-                      TextStyle(fontSize: 25.0, height: 2.0, color: Colors.red),
-                )),
-            GestureDetector(
-                onTap: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const PratoPage(
-                          pratoEscolhido: 'Bebidas'), // The page you want
-                    ),
-                  );
-                },
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 200,
-                  child: PageView.builder(
-                    itemCount: DUMMY_IMAGES_BEBIDAS.length,
-                    pageSnapping: true,
-                    controller: _pageController,
-                    onPageChanged: (page) {
-                      setState(() {
-                        activePage4 = page;
-                      });
-                    },
-                    itemBuilder: (context, pagePosition) {
-                      bool active = pagePosition == activePage5;
-                      return slider(DUMMY_IMAGES_BEBIDAS, pagePosition, active);
-                    },
-                  ),
-                )),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: indicators(DUMMY_IMAGES_BEBIDAS.length, activePage5)),
-          ],
+          ),
         ),
       ),
     );
@@ -307,7 +231,7 @@ imageAnimation(PageController animation, images, pagePosition) {
 List<Widget> indicators(imagesLength, currentIndex) {
   return List<Widget>.generate(imagesLength, (index) {
     return Container(
-      margin: const EdgeInsets.all(3),
+      margin: const EdgeInsets.all(5),
       width: 10,
       height: 10,
       decoration: BoxDecoration(
