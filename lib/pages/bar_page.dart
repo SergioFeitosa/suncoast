@@ -61,6 +61,9 @@ class _CarouselState extends State<Carousel> {
   Widget build(BuildContext context) {
     //final bar = ModalRoute.of(context)?.settings.arguments as Bar?;
 
+    final List imageSliders =
+        DUMMY_IMAGES_PRATOS_REGIONAISX.map((item) => item["image"]).toList();
+
     return Center(
       child: SingleChildScrollView(
         child: Column(
@@ -74,40 +77,43 @@ class _CarouselState extends State<Carousel> {
               ),
             ),
             GestureDetector(
-                onTap: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => PratoPage(
-                          bar: widget.bar,
-                          pratoEscolhido:
-                              pratoEscolhido++), // The page you want
-                    ),
-                  );
-                },
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 200,
-                  child: PageView.builder(
-                    itemCount: DUMMY_IMAGES_PRATOS_REGIONAIS.length,
-                    pageSnapping: true,
-                    controller: _pageController,
-                    onPageChanged: (page) {
-                      setState(() {
-                        activePage = page;
-                      });
-                    },
-                    itemBuilder: (context, pagePosition) {
-                      bool active = pagePosition == activePage;
-                      pratoEscolhido = activePage;
-                      return slider(
-                          DUMMY_IMAGES_PRATOS_REGIONAIS, pagePosition, active);
-                    },
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: 200,
+                child: PageView.builder(
+                  itemCount: DUMMY_IMAGES_PRATOS_REGIONAISX.length,
+                  pageSnapping: true,
+                  controller: _pageController,
+                  onPageChanged: (page) {
+                    setState(() {
+                      activePage = page;
+                    });
+                  },
+                  itemBuilder: (context, pagePosition) {
+                    bool active = pagePosition == activePage;
+                    pratoEscolhido = activePage;
+                    return slider(imageSliders, pagePosition, active);
+                  },
+                ),
+              ),
+              onTap: () async {
+                await Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => PratoPage(
+                      bar: widget.bar,
+                      pratoEscolhido: int.tryParse(
+                          DUMMY_IMAGES_PRATOS_REGIONAISX
+                              .map((item) => item["routename"])
+                              .toString()),
+                    ), // The page you want
                   ),
-                )),
+                );
+              },
+            ),
             Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: indicators(
-                    DUMMY_IMAGES_PRATOS_REGIONAIS.length, activePage)),
+                    DUMMY_IMAGES_PRATOS_REGIONAISX.length, activePage)),
             const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 child: TextField(
